@@ -1,0 +1,13 @@
+<section>
+  <h1>Nome: <%= @carrier.fantasy_name %></h1>
+  <div>
+    
+    <p>CNPJ: <%= @carrier.cnpj %></p>
+    <p>Email: <%= @carrier.email %></p>
+    <p>Domínio: <%= @carrier.domain %></p>
+    <p>Endereço: <%= @carrier.address %></p>
+  </div>
+  <div>      
+    <%= link_to 'Voltar', root_path %>
+  </div>
+</section>

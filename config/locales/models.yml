@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      carrier: "Trasportadora"
+    attributes:
+      carrier:
+        fantasy_name: "Nome"
+        cnpj: "CNPJ"
+        email: "Email"
+        address: "Endereço"
+        domain: "Domínio"
+      
