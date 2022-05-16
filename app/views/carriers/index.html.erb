@@ -22,7 +22,7 @@
     <tbody>
     <% @carriers.each do |c|%>
         <tr>
-          <td><%= c.fantasy_name %></td>
+          <td><%= link_to c.fantasy_name, c %></td>
           <td><%= c.cnpj %></td>
           <td><%= c.domain %></td>
           <td><%= c.address %></td>

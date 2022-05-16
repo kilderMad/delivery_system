@@ -23,4 +23,20 @@ class CarriersController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @carrier = Carrier.find(params[:id])
+  end
+
+  def update
+    @carrier = Carrier.find(params[:id])
+    carrier_params = params.require(:carrier).permit(:fantasy_name, :cnpj, :domain, :email, :address)
+
+    if @carrier.update(carrier_params)
+      redirect_to @carrier, notice: 'Transportadora atualizada com sucesso.'
+    else
+      flash.now[:notice] = 'Preencha os campos corretamente'
+      render :edit
+    end
+  end
 end
