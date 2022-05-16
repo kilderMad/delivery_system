@@ -1,0 +1,32 @@
+<section>
+  <h1>Transportadoras</h1>
+  
+  <% if @carriers.empty?%>
+    <div>
+      <p>Não há transportadoras cadastradas</p>
+    </div>
+  <% else %>
+    <table class='carriers'>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Domínio</th>
+        <th>Endereço</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @carriers.each do |c|%>
+        <tr>
+          <td><%= c.fantasy_name %></td>
+          <td><%= c.cnpj %></td>
+          <td><%= c.domain %></td>
+          <td><%= c.address %></td>
+          <td><%= c.email %></td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+  <%end%>
+</section>
