@@ -6,8 +6,6 @@
 
 body,
 html {
-    background-color: #112B3C;
-    color: #EFEFEF;
     height: 100%;
     width: 100%;
 }
@@ -17,11 +15,11 @@ section {
 }
 
 #menu {
+    color: #EFEFEF;
     display: flex;
     background-color: black;
     align-items: center;
-    padding: 12px;
-    margin: 0 2%;
+    padding: 12px 30px;
 }
 
 .item_menu a {
@@ -30,4 +28,8 @@ section {
     text-decoration: none;
     margin: 0 10px;
     padding: 10px;
+}
+
+.field_with_errors>input {
+    border: 1px solid red;
 }

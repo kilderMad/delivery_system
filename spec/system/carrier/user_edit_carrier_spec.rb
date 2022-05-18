@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'User edit carrier' do
   it 'and sees filled fields ' do
     Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
-
+    user = User.create!(email: 'kilder@gmail.com', password: 'password', admin: true)
+    login_as(user)
     visit root_path
     click_on 'Transportadoras'
     click_on 'Pac'
@@ -19,7 +20,8 @@ describe 'User edit carrier' do
 
   it 'success' do
     Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
-
+    user = User.create!(email: 'kilder@gmail.com', password: 'password', admin: true)
+    login_as(user)
     visit root_path
     click_on 'Transportadoras'
     click_on 'Pac'
@@ -43,7 +45,8 @@ describe 'User edit carrier' do
 
   it 'with blank fields' do
     Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
-
+    user = User.create!(email: 'kilder@gmail.com', password: 'password', admin: true)
+    login_as(user)
     visit root_path
     click_on 'Transportadoras'
     click_on 'Pac'

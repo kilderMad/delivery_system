@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -12,15 +13,28 @@
 
   <body>
     <header>
-    <nav id='menu'>
-      <div class='item_menu'>
-        <h1>Sistema de Entregas</h1>
+    <nav id='menu' class=' flex justify-between'>
+      <div class='flex'>
+        <div class='item'>
+          <h1><%= link_to 'Sistema de Entregas', root_path%></h1>
+        </div>
+        <% if user_signed_in? && current_user.admin? %>
+        <div class='item_menu'><%= link_to 'Transportadoras', carriers_path %></div>
+        <% end %> 
       </div>
-      <div class='item_menu'><%= link_to 'Transportadoras', carriers_path %></div>          
+      <% if user_signed_in? %>
+      <div class='flex'>
+        <div class='px-4'><%= current_user.email %></div>
+        <div class=' text-red-600'><%= button_to 'Sair', destroy_user_session_path, method: 'delete' %></div> 
+      </div>
+      <% else %>
+      <div class=''><%= link_to 'Entrar', new_user_session_path %></div>
+      <% end %>         
     </nav>
     </header>
     <div>
-      <%= notice %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     </div>
     <%= yield %>
   </body>
