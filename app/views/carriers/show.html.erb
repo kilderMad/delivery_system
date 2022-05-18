@@ -1,14 +1,45 @@
-<section>
-  <h1>Nome: <%= @carrier.fantasy_name %></h1>
-  <div>
+<div class='flex'>
+  <section>
+    <h1>Nome: <%= @carrier.fantasy_name %></h1>
+    <div>
+      
+      <p>CNPJ: <%= @carrier.cnpj %></p>
+      <p>Email: <%= @carrier.email %></p>
+      <p>Domínio: <%= @carrier.domain %></p>
+      <p>Endereço: <%= @carrier.address %></p>
+    </div>
+    <div>      
+      <%= link_to 'Voltar', root_path %>
+      <%= link_to 'Editar', edit_carrier_path %>
+    </div>
+  </section>
+
+  <section>
+    <h1> Veiculos</h1>
     
-    <p>CNPJ: <%= @carrier.cnpj %></p>
-    <p>Email: <%= @carrier.email %></p>
-    <p>Domínio: <%= @carrier.domain %></p>
-    <p>Endereço: <%= @carrier.address %></p>
-  </div>
-  <div>      
-    <%= link_to 'Voltar', root_path %>
-    <%= link_to 'Editar', edit_carrier_path %>
-  </div>
-</section>
+    <% if @vehicles && @vehicles.empty?%>
+    <div>
+      <p>Não há veiculos cadastrados</p>
+    </div>
+  <% elsif @vehicles %>
+    <table class='vehicles'>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>CNPJ</th>
+        <th>Domínio</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @vehicles.each do |v|%>
+        <tr>
+          <td><%= v.brand%></td>
+          <td><%= v.model %></td>
+          <td><%= v.plate %></td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+  <%end%>
+  </section>
+<div>

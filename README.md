@@ -1,6 +1,6 @@
 # READ
 
-Sistema de Delivery
+# Sistema de Delivery
 
 - Sistema capaz de cadastrar transportadoras e designar ordens de serviço para tais.
 
@@ -15,5 +15,6 @@ Sistema de Delivery
 - devise
 - tailwindcss
 
->>> link do planejamento do projeto
+# link do planejamento do projeto
+
 https://github.com/kilderMad/delivery_system/projects/1

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users 
   root to: "home#index"
-  resources :carriers, only: [:index, :new, :show, :new, :create, :edit, :update]
+  resources :carriers, only: [:index, :new, :show, :new, :create, :edit, :update] do
+    resources :vehicles
+  end
 end

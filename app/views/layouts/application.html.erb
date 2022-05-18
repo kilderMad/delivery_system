@@ -20,6 +20,8 @@
         </div>
         <% if user_signed_in? && current_user.admin? %>
         <div class='item_menu'><%= link_to 'Transportadoras', carriers_path %></div>
+        <%  elsif user_signed_in? && !current_user.admin? %>
+        <div class='item_menu'><%= link_to 'Dashboard', carrier_path(@carrier_id) %></div>
         <% end %> 
       </div>
       <% if user_signed_in? %>

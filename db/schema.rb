@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_16_235137) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_18_145043) do
   create_table "carriers", force: :cascade do |t|
     t.string "fantasy_name"
     t.string "cnpj"
@@ -30,8 +30,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_16_235137) do
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "carrier_id"
+    t.index ["carrier_id"], name: "index_users_on_carrier_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicles", force: :cascade do |t|
+    t.string "plate"
+    t.string "brand"
+    t.string "model"
+    t.string "year"
+    t.integer "capacity"
+    t.integer "carrier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carrier_id"], name: "index_vehicles_on_carrier_id"
+  end
+
+  add_foreign_key "users", "carriers"
+  add_foreign_key "vehicles", "carriers"
 end

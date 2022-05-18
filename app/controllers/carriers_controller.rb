@@ -6,6 +6,11 @@ class CarriersController < ApplicationController
 
   def show
     @carrier = Carrier.find(params[:id])
+    
+    if current_user && !current_user.admin?
+      @carrier_id = current_user
+      @vehicles = @carrier.vehicles
+    end
   end
 
   def new
