@@ -1,12 +1,11 @@
 class CarriersController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!
   def index
     @carriers = Carrier.all
   end
 
   def show
     @carrier = Carrier.find(params[:id])
-    
     if current_user && !current_user.admin?
       @carrier_id = current_user
       @vehicles = @carrier.vehicles

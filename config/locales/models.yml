@@ -9,4 +9,10 @@ pt-BR:
         email: "Email"
         address: "Endereço"
         domain: "Domínio"
+      vehicle:
+        brand: "Marca"
+        plate: "Placa"
+        model: "Modelo"
+        capacity: "Capacidade"
+        year: "Ano"
       

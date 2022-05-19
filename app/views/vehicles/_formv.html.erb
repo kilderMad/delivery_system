@@ -1,0 +1,50 @@
+<%= form_with model: [:carrier, @vehicle], html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
+<div class=' flex flex-col text-black bg-slate-300 justify-center items-center p-10 m-auto'>
+    <h2 class=' text-2xl font-bold pb-10'>Cadastro de Veiculo</h2>
+    <div class='flex flex-col'>
+  <div class='field pb-3'>
+    <%= f.label :brand %><br />
+    <%= f.text_field :brand, class:'rounded-2xl' %>
+    <% if @vehicle.errors.any?%>
+      <p class=' text-red-600'><%= @vehicle.errors.full_messages_for(:brand).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :model %><br />
+    <%= f.text_field :model, class:'rounded-2xl' %>
+    <% if @vehicle.errors.any?%>
+      <p class=' text-red-600'><%= @vehicle.errors.full_messages_for(:model).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :plate %><br />
+    <%= f.text_field :plate, class:'rounded-2xl' %>
+    <% if @vehicle.errors.any?%>
+      <p class=' text-red-600'><%= @vehicle.errors.full_messages_for(:plate).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :year %><br />
+    <%= f.text_field :year, class:'rounded-2xl' %>
+    <% if @vehicle.errors.any?%>
+      <p class=' text-red-600'><%= @vehicle.errors.full_messages_for(:year).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :capacity %><br />
+    <%= f.number_field :capacity, class:'rounded-2xl' %>
+    <% if @vehicle.errors.any?%>
+      <p class=' text-red-600'><%= @vehicle.errors.full_messages_for(:capacity).first %></p>
+    <% end %>
+  </div>
+  
+  <div class='button_send'>
+    <%= f.submit 'Cadastrar', class:"actions px-1 bg-slate-500 w-24 rounded-lg text-center my-2 mx-auto cursor-pointer border-2 border-slate-600 text-white "%>
+  </div>
+<% end %>
+</div>
+</div>

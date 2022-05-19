@@ -1,45 +1,50 @@
-<%= form_with model: @carrier, data: { turbo: false } do |f| %>
-
-  <div class='field'>
-    <%= f.label :fantasy_name %>
-    <%= f.text_field :fantasy_name %>
+<%= form_with model: @carrier, html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
+<div class=' flex flex-col text-black bg-slate-300 justify-center items-center p-10 m-auto'>
+    <h2 class=' text-2xl font-bold pb-10'>Cadastro de Transportadora</h2>
+    <div class='flex flex-col'>
+  <div class='field pb-3'>
+    <%= f.label :fantasy_name %><br />
+    <%= f.text_field :fantasy_name, class:'rounded-2xl' %>
     <% if @carrier.errors.any?%>
-      <p><%= @carrier.errors.full_messages_for(:fantasy_name).first %></p>
+      <p class=' text-red-600'><%= @carrier.errors.full_messages_for(:fantasy_name).first %></p>
     <% end %>
   </div>
 
-  <div class='field'>
-    <%= f.label :cnpj %>
-    <%= f.text_field :cnpj %>
+  <div class='field pb-5'>
+    <%= f.label :cnpj %><br />
+    <%= f.text_field :cnpj, class:'rounded-2xl' %>
     <% if @carrier.errors.any?%>
-      <p><%= @carrier.errors.full_messages_for(:cnpj).first %></p>
+      <p class=' text-red-600'><%= @carrier.errors.full_messages_for(:cnpj).first %></p>
     <% end %>
   </div>
 
-  <div class='field'>
-    <%= f.label :domain %>
-    <%= f.text_field :domain %>
+  <div class='field pb-5'>
+    <%= f.label :domain %><br />
+    <%= f.text_field :domain, class:'rounded-2xl' %>
     <% if @carrier.errors.any?%>
-      <p><%= @carrier.errors.full_messages_for(:domain).first %></p>
+      <p class=' text-red-600'><%= @carrier.errors.full_messages_for(:domain).first %></p>
     <% end %>
   </div>
 
-  <div class='field'>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+  <div class='field pb-5'>
+    <%= f.label :email %><br />
+    <%= f.text_field :email, class:'rounded-2xl' %>
     <% if @carrier.errors.any?%>
-      <p><%= @carrier.errors.full_messages_for(:email).first %></p>
+      <p class=' text-red-600'><%= @carrier.errors.full_messages_for(:email).first %></p>
     <% end %>
   </div>
 
-  <div class='field'>
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+  <div class='field pb-5'>
+    <%= f.label :address %><br />
+    <%= f.text_field :address, class:'rounded-2xl' %>
     <% if @carrier.errors.any?%>
-      <p><%= @carrier.errors.full_messages_for(:address).first %></p>
+      <p class=' text-red-600'><%= @carrier.errors.full_messages_for(:address).first %></p>
     <% end %>
   </div>
+  
   <div class='button_send'>
-    <%= f.submit 'Enviar'%>
+    <%= f.submit 'Enviar', class:"actions px-1 bg-slate-500 w-24 rounded-lg text-center my-2 mx-auto cursor-pointer border-2 border-slate-600 text-white "%>
   </div>
 <% end %>
+</div>
+</div>
