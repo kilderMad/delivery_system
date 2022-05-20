@@ -4,4 +4,5 @@ class Carrier < ApplicationRecord
   validates :fantasy_name, :cnpj, :email, :domain, uniqueness: true
 
   has_many :vehicles
+  has_many :prices
 end

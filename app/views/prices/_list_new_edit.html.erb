@@ -1,0 +1,79 @@
+<section>
+  <div>
+    <% if @prices.empty?%>
+    <div>
+      <p>Não há Preços cadastrados</p>
+    </div>
+  <% else %>
+    <table class='prices'>
+    <thead>
+      <tr>
+        <th>Metros cúbicos</th>
+        <th>Peso</th>
+        <th>Valor por Km</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @prices.each do |val|%>
+        <tr>
+          <td><%= val.cbm_min %> a <%= val.cbm_max %></td>
+          <td><%= val.weight_min %>kg a <%= val.weight_max %>kg</td>
+          <td>R$ <%= val.value_km %></td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+  <%end%>
+  </div>
+</section>
+
+<%= form_with model: [:carrier, @price], html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
+<div class=' flex flex-col text-black bg-slate-300 justify-center items-center p-10 m-auto'>
+    <h2 class=' text-2xl font-bold pb-10'>Cadastro de Transportadora</h2>
+    <div class='flex flex-col'>
+  <div class='field pb-3'>
+    <%= f.label :cbm_min %><br />
+    <%= f.text_field :cbm_min, class:'rounded-2xl' %>
+    <% if @price.errors.any?%>
+      <p class=' text-red-600'><%= @price.errors.full_messages_for(:cbm_min).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :cbm_max %><br />
+    <%= f.text_field :cbm_max, class:'rounded-2xl' %>
+    <% if @price.errors.any?%>
+      <p class=' text-red-600'><%= @price.errors.full_messages_for(:cbm_max).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :weight_min %><br />
+    <%= f.text_field :weight_min, class:'rounded-2xl' %>
+    <% if @price.errors.any?%>
+      <p class=' text-red-600'><%= @price.errors.full_messages_for(:weight_min).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :weight_max %><br />
+    <%= f.text_field :weight_max, class:'rounded-2xl' %>
+    <% if @price.errors.any?%>
+      <p class=' text-red-600'><%= @price.errors.full_messages_for(:weight_max).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :value_km %><br />
+    <%= f.text_field :value_km, class:'rounded-2xl' %>
+    <% if @price.errors.any?%>
+      <p class=' text-red-600'><%= @price.errors.full_messages_for(:value_km).first %></p>
+    <% end %>
+  </div>
+  
+  <div class='button_send'>
+    <%= f.submit 'Enviar', class:"actions px-1 bg-slate-500 w-24 rounded-lg text-center my-2 mx-auto cursor-pointer border-2 border-slate-600 text-white "%>
+  </div>
+<% end %>
+</div>
+</div>

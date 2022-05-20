@@ -15,4 +15,10 @@ pt-BR:
         model: "Modelo"
         capacity: "Capacidade"
         year: "Ano"
+      price:
+        cbm_min: "Metros cúbicos min"
+        cbm_max: "Metros cúbicos max"
+        weight_min: "Peso min"
+        weight_max: "Peso max"
+        value_km: "Valor por km"
       

@@ -1,4 +1,5 @@
 <div class='flex'>
+  <div class='item_menu'><%= link_to 'Tabela de preços', new_carrier_price_path(@carrier) %></div>
   <section>
     <h1>Nome: <%= @carrier.fantasy_name %></h1>
     <div>
@@ -15,7 +16,7 @@
   </section>
 
   <section>
-    <h1> Veiculos</h1>
+    <h1>Veiculos</h1>
     
     <% if @vehicles && @vehicles.empty?%>
     <div>
