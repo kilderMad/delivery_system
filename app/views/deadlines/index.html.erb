@@ -1,0 +1,28 @@
+<section>
+  <div>
+    
+    <% if @deadlines.empty?%>
+    <div>
+      <p>Não há Prazos cadastrados</p>
+    </div>
+  <% elsif @deadlines%>
+    <table class='deadlines'>
+    <thead>
+      <tr>
+        <th>Distancia</th>
+        <th>Prazo</th>
+        <th>Açoes</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @deadlines.each do |attr|%>
+        <tr>
+          <td><%= attr.distance_min %>km a <%= attr.distance_max %>km</td>
+          <td><%= attr.time_arrive %> dias</td>
+        </tr>
+    <%end%>
+    </tbody>
+  </table>
+  <%end%>
+  </div>
+</section>

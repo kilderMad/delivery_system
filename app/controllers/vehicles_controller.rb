@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   def show    
     @vehicle =  Vehicle.find(params[:id])
+    @carrier = Carrier.find(params[:carrier_id])
   end
 
   def new

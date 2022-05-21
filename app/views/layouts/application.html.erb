@@ -22,7 +22,7 @@
         <div class='item_menu mr-2'><%= link_to 'Transportadoras', carriers_path %></div>
         <%  elsif user_signed_in? && !current_user.admin? %>
         <div class='item_menu ml-3'><%= link_to 'Dashboard', @carrier %></div>
-        
+        <div class='item_menu ml-3'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
         <% end %> 
       </div>
       <% if user_signed_in? %>

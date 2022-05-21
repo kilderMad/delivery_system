@@ -5,4 +5,5 @@ class Carrier < ApplicationRecord
 
   has_many :vehicles
   has_many :prices
+  has_many :deadlines
 end
