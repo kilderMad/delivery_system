@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User register new price' do
   it 'success 1/1' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    user = User.create!(email: 'kilder@gmail.com', password: 'password', carrier: carrier)
+    user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     login_as(user)
 
     visit root_path
@@ -25,7 +25,7 @@ describe 'User register new price' do
 
   it 'success 2/2' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    user = User.create!(email: 'kilder@gmail.com', password: 'password', carrier: carrier)
+    user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     login_as(user)
 
     visit root_path
@@ -59,7 +59,7 @@ describe 'User register new price' do
 
   it 'with blank fields' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    user = User.create!(email: 'kilder@gmail.com', password: 'password', carrier: carrier)
+    user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     login_as(user)
 
     visit root_path

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User register carrier' do
   it 'success' do
-    user = User.create!(email: 'kilder@gmail.com', password: 'password', admin: true)
+    user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
     click_on 'Transportadoras'
@@ -25,7 +25,7 @@ describe 'User register carrier' do
   end
 
   it 'with blank fields' do
-    user = User.create!(email: 'kilder@gmail.com', password: 'password', admin: true)
+    user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
     click_on 'Transportadoras'
