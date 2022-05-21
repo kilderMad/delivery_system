@@ -17,7 +17,7 @@ describe 'User visits prices' do
     click_on 'Dashboard'
     click_on 'Tabela de preços'
 
-    expect(current_path).to eq new_carrier_price_path(carrier)
+    expect(current_path).to eq carrier_prices_path(carrier)
     expect(page).to have_content 'R$ 0.5'
     expect(page).to have_content 'R$ 0.5'
     expect(page).to have_content '0.001 a 0.5'
@@ -37,7 +37,7 @@ describe 'User visits prices' do
     click_on 'Dashboard'
     click_on 'Tabela de preços'
 
-    expect(current_path).to eq new_carrier_price_path(carrier)
+    expect(current_path).to eq carrier_prices_path(carrier)
     expect(page).to have_content 'Não há Preços cadastrados'
   end
 end

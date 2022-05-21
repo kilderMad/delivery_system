@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   root to: "home#index"
   resources :carriers, only: [:index, :new, :show, :new, :create, :edit, :update] do
     resources :vehicles, only: [:new, :create, :show]
-    resources :prices, only: [:new, :create, :edit, :update]
+    resources :prices, only: [:new, :create, :edit, :update, :index, :destroy]
   end
 end
