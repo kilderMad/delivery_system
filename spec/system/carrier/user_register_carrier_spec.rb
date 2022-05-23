@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'User register carrier' do
+  it 'and must be authenticated' do
+    visit new_carrier_path
+    expect(current_path).to eq new_user_session_path
+  end
   it 'success' do
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)

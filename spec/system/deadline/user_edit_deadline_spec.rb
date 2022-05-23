@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe 'User edit deadline' do
+  it 'and must be authenticated' do
+    carrier = Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
+    Deadline.create!(distance_min: 0, distance_max: 600, time_arrive: 2, carrier: carrier)
+    visit edit_carrier_deadline_path(1,1)
+    expect(current_path).to eq new_user_session_path
+  end
   it 'and sees filled fields' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
     Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier)

@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe 'User edit price' do
+  it 'and must be authenticated' do
+    carrier = Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
+    Price.create!(cbm_min: 0.001, cbm_max: 0.500, weight_min: 0, weight_max: 10, value_km: 0.5, carrier: carrier)
+    visit edit_carrier_price_path(1, 1)
+    expect(current_path).to eq new_user_session_path
+  end
   it 'and sees filled fields' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
     Price.create!(cbm_min: 0.001, cbm_max: 0.500, weight_min: 0, weight_max: 10, value_km: 0.5, carrier: carrier)

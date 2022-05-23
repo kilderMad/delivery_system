@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe 'User edit carrier' do
+  it 'and must be authenticated' do
+    Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
+    visit edit_carrier_path(1)
+    expect(current_path).to eq new_user_session_path
+  end
   it 'and sees filled fields ' do
     Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
