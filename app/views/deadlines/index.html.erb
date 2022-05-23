@@ -19,6 +19,7 @@
         <tr>
           <td><%= attr.distance_min %>km a <%= attr.distance_max %>km</td>
           <td><%= attr.time_arrive %> dias</td>
+          <td><%= link_to 'Editar', edit_carrier_deadline_path(@carrier, attr) %></td>
         </tr>
     <%end%>
     </tbody>

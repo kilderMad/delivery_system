@@ -25,4 +25,20 @@ class DeadlinesController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @carrier = Carrier.find(params[:carrier_id])
+    @deadline = Deadline.find(params[:id])
+  end
+
+  def update
+    @carrier = Carrier.find(params[:carrier_id])
+    deadline_params = params.require(:deadline).permit(:distance_min, :distance_max, :time_arrive, :carrier_id)
+    @deadline = Deadline.find(params[:id])
+    if @deadline.update(deadline_params)
+      redirect_to carrier_deadlines_path(@carrier), notice: 'Prazo de entrega atualizado com sucesso'
+    else
+      render :edit
+    end
+  end
 end
