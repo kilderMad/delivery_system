@@ -1,4 +1,5 @@
 class VehiclesController < ApplicationController
+  before_action :authenticate_user!
   def show    
     @vehicle =  Vehicle.find(params[:id])
     @carrier = Carrier.find(params[:carrier_id])

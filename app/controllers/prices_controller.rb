@@ -1,4 +1,5 @@
 class PricesController < ApplicationController 
+  before_action :authenticate_user!
   def index
     if current_user && !current_user.admin?  
       @carrier = Carrier.find(params[:carrier_id])

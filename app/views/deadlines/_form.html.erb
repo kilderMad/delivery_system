@@ -1,0 +1,35 @@
+
+<%= form_with model: [:carrier, @deadline], html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
+<div class=' flex flex-col text-black bg-slate-300 justify-center items-center p-10 m-auto'>
+    <h2 class=' text-2xl font-bold pb-10'>Cadastro de Prazos</h2>
+  <div class='flex'>
+  <div class='field pb-3'>
+    <%= f.label :distance_min %><br />
+    <%= f.text_field :distance_min, class:'rounded-2xl' %>
+    <% if @deadline.errors.any?%>
+      <p class=' text-red-600'><%= @deadline.errors.full_messages_for(:distance_min).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :distance_max %><br />
+    <%= f.text_field :distance_max, class:'rounded-2xl' %>
+    <% if @deadline.errors.any?%>
+      <p class=' text-red-600'><%= @deadline.errors.full_messages_for(:distance_max).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :time_arrive %><br />
+    <%= f.text_field :time_arrive, class:'rounded-2xl' %>
+    <% if @deadline.errors.any?%>
+      <p class=' text-red-600'><%= @deadline.errors.full_messages_for(:time_arrive).first %></p>
+    <% end %>
+  </div>
+ 
+  <div class='button_send'>
+    <%= f.submit 'Enviar', class:"actions px-1 bg-slate-500 w-24 rounded-lg text-center my-2 mx-auto cursor-pointer border-2 border-slate-600 text-white "%>
+  </div>
+<% end %>
+</div>
+</div>
