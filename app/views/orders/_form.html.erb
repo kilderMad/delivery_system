@@ -62,7 +62,15 @@
     <%= f.label :carrier_id %><br />
     <%= f.collection_select :carrier_id, @carriers, :id, :fantasy_name %>
     <% if @order.errors.any?%>
-      <p class=' text-red-600'><%= @order.errors.full_messages_for(:receiver_phone).first %></p>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:carrier_id).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :distance %><br />
+    <%= f.number_field :distance %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:distance).first %></p>
     <% end %>
   </div>
   

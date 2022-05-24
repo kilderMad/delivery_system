@@ -18,6 +18,7 @@ describe 'user register new order' do
     fill_in 'Telephone', with: '81981316988'
     fill_in 'Endereço de entrega', with: 'Rua cambui, 1, zumbi, Recife/PE'
     fill_in 'Endereço de retirada', with: 'Av. São paulo, 123'
+    fill_in 'Distancia', with: '1500'
     select 'DLL', from: 'Transportadora'
     click_on 'Enviar'
 
@@ -27,7 +28,9 @@ describe 'user register new order' do
     expect(page).to have_content 'Transportadora: DLL'
     expect(page).to have_content 'Dimensão em M cúbicos: 1.0'
     expect(page).to have_content 'Peso: 10.0kg'
+    expect(page).to have_content 'Distancia: 1500'
     expect(page).to have_content 'Prazo: '
+    expect(page).to have_content 'Frete: '
     expect(page).to have_content 'Endereço de retirada: Av. São paulo, 123'
     expect(page).to have_content 'Endereço de entrega: Rua cambui, 1, zumbi, Recife/PE'
     expect(page).to have_content 'Informações do destinatario'

@@ -5,9 +5,9 @@ describe 'user visits orders' do
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     carrier1 = Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
     carrier2 = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    order1 = Order.create!(weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    order1 = Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
                   receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', deadline: 5, carrier: carrier1)
-    order2 = Order.create!( weight: 1.0, cubic_size: 0.5, pickup_address: 'plablabla', receiver_address: 'plableblu',
+    order2 = Order.create!( distance: 2000, weight: 1.0, cubic_size: 0.5, pickup_address: 'plablabla', receiver_address: 'plableblu',
                   receiver_name: 'Simba kilder ferreira', receiver_cpf: '12215516699', receiver_phone: '90991316988', deadline: 5, carrier: carrier2)
 
     
@@ -49,9 +49,9 @@ describe 'user visits orders' do
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     carrier1 = Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
     carrier2 = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    Order.create!(weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
                   receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', deadline: 6, carrier: carrier1)
-    Order.create!(status: 2, weight: 1.3, cubic_size: 0.5, pickup_address: 'plablabla', receiver_address: 'plableblu',
+    Order.create!(distance: 2000, status: 2, weight: 1.3, cubic_size: 0.5, pickup_address: 'plablabla', receiver_address: 'plableblu',
                   receiver_name: 'Simba kilder ferreira', receiver_cpf: '12215516699', receiver_phone: '90991316988', deadline: 5, carrier: carrier2)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     login_as(user)

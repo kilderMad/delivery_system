@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   enum status: { "Pendente de aceite": 1, Aceito: 2, Negado: 3, Enviado: 4, Finalizado: 5}
 
-  validates :status, :code, :cubic_size, :pickup_address, :receiver_address, :receiver_cpf, :receiver_name, :receiver_phone, :weight, presence: true
+  validates :status, :code, :cubic_size, :pickup_address, :receiver_address, :receiver_cpf, :receiver_name, :receiver_phone, :weight, :distance, presence: true
 
   belongs_to :carrier
   before_validation :generator_code
