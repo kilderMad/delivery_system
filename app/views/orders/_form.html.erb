@@ -1,0 +1,74 @@
+<%= form_with model: @order, html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
+<div class=' flex flex-col text-black bg-slate-300 justify-center items-center p-10 m-auto'>
+    <h2 class=' text-2xl font-bold pb-10'>Cadastro de Transportadora</h2>
+    <div class='flex flex-col'>
+  <div class='field pb-3'>
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:weight).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :cubic_size %><br />
+    <%= f.text_field :cubic_size, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:cubic_size).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :pickup_address %><br />
+    <%= f.text_field :pickup_address, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:pickup_address).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :receiver_address %><br />
+    <%= f.text_field :receiver_address, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:receiver_address).first %></p>
+    <% end %>
+  </div>
+  <h1>Informações do destinatario</h1>
+  <div class='field pb-5'>
+    <%= f.label :receiver_name %><br />
+    <%= f.text_field :receiver_name, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:receiver_name).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :receiver_cpf %><br />
+    <%= f.text_field :receiver_cpf, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:receiver_cpf).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :receiver_phone %><br />
+    <%= f.text_field :receiver_phone, class:'rounded-2xl' %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:receiver_phone).first %></p>
+    <% end %>
+  </div>
+
+  <div class='field pb-5'>
+    <%= f.label :carrier_id %><br />
+    <%= f.collection_select :carrier_id, @carriers, :id, :fantasy_name %>
+    <% if @order.errors.any?%>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:receiver_phone).first %></p>
+    <% end %>
+  </div>
+  
+  <div class='button_send'>
+    <%= f.submit 'Enviar', class:"actions px-1 bg-slate-500 w-24 rounded-lg text-center my-2 mx-auto cursor-pointer border-2 border-slate-600 text-white "%>
+  </div>
+<% end %>
+</div>
+</div>

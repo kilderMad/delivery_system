@@ -5,6 +5,7 @@ pt-BR:
       vehicle: "Veiculo"
       price: "Preços"
       deadline: "Prazo de entrega"
+      order: "Pedido"
     attributes:
       carrier:
         fantasy_name: "Nome"
@@ -33,4 +34,16 @@ pt-BR:
         distance_max: "Distancia maxima"
         time_arrive: "Tempo de entrega" 
         carrier_id: "Transportadora"
-        carrier: "Transportadora"     
+        carrier: "Transportadora"  
+      order: 
+        weight: "Peso"
+        code: "Código"
+        status: "Status"
+        cubic_size: "Metros cúbicos"
+        pickup_address: "Endereço de retirada"
+        receiver_address: "Endereço de entrega"
+        receiver_cpf: "CPF"
+        receiver_name: "Destinatário"
+        receiver_phone: "Telephone"
+        deadline: "Prazo"
+        carrier_id: "Transportadora"
