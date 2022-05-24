@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_185922) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_24_001322) do
   create_table "carriers", force: :cascade do |t|
     t.string "fantasy_name"
     t.string "cnpj"
@@ -29,6 +29,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_185922) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["carrier_id"], name: "index_deadlines_on_carrier_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "code"
+    t.integer "status", default: 1
+    t.decimal "cubic_size"
+    t.decimal "weight"
+    t.string "pickup_address"
+    t.string "receiver_address"
+    t.string "receiver_name"
+    t.string "receiver_cpf"
+    t.string "receiver_phone"
+    t.integer "deadline"
+    t.integer "carrier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carrier_id"], name: "index_orders_on_carrier_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -71,6 +88,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_185922) do
   end
 
   add_foreign_key "deadlines", "carriers"
+  add_foreign_key "orders", "carriers"
   add_foreign_key "prices", "carriers"
   add_foreign_key "users", "carriers"
   add_foreign_key "vehicles", "carriers"

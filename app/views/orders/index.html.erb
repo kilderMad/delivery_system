@@ -1,0 +1,22 @@
+<section>
+  <% if @orders.empty? %>
+  <p>Não há pedidos</p>
+  <% else %>
+  <% @orders.each do |o| %>
+    <div>
+      <p>Pedido: <%= o.code %></p>
+      <p>Status: <%= o.status %></p>
+      <p>Peso: <%= o.weight %>kg</p>
+      <p>Dimensão em M cúbicos: <%= o.cubic_size %></p>
+      <p>Endereço de retirada: <%= o.pickup_address %></p>
+      <h1>Informações do destinatario</h1>
+      <p>Endereço de entrega: <%= o.receiver_address %></p>
+      <p><%= o.receiver_name %></p>
+      <p>CPF: <%= o.receiver_cpf %></p>
+      <p>Telephone: <%= o.receiver_phone %></p>
+      <p>Prazo: <%= o.deadline %> dias</p>
+      <p>Transportadora: <%= o.carrier.fantasy_name %></p>
+    </div>
+  <% end %>
+  <% end%>
+</section>
