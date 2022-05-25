@@ -49,3 +49,5 @@ pt-BR:
         carrier_id: "Transportadora"
         carrier: "Transportadora"
         distance: "Distancia"
+        vehicle_id: "Veiculo"
+        vehicle: "Veiculo"

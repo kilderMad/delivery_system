@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_24_135301) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_25_175409) do
   create_table "carriers", force: :cascade do |t|
     t.string "fantasy_name"
     t.string "cnpj"
@@ -47,7 +47,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_135301) do
     t.datetime "updated_at", null: false
     t.decimal "price"
     t.integer "distance"
+    t.integer "vehicle_id"
     t.index ["carrier_id"], name: "index_orders_on_carrier_id"
+    t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -91,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_24_135301) do
 
   add_foreign_key "deadlines", "carriers"
   add_foreign_key "orders", "carriers"
+  add_foreign_key "orders", "vehicles"
   add_foreign_key "prices", "carriers"
   add_foreign_key "users", "carriers"
   add_foreign_key "vehicles", "carriers"

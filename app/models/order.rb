@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  enum status: { "Pendente de aceite": 1, Aceito: 2, Negado: 3, Enviado: 4, Finalizado: 5}
+  enum status: { "Pendente de aceite": 1, Aceito: 2, Recusado: 3, Enviado: 4, Finalizado: 5}
 
   validates :status, :code, :cubic_size, :pickup_address, :receiver_address, :receiver_cpf, :receiver_name, :receiver_phone, :weight, :distance, presence: true
   validates :code, length: { is: 15 }
@@ -7,6 +7,7 @@ class Order < ApplicationRecord
   validates :cubic_size, :weight, numericality: { greater_than_or_equal_to: 0 }
   validates :distance, numericality: { greater_than: 0 }
 
+  belongs_to :vehicle, optional: true
   belongs_to :carrier
   before_validation :generator_code, :calc_deadline
 

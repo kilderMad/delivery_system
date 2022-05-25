@@ -1,10 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :accept, :reject]
 
   def index
     if current_user && !current_user.admin?
-      @orders = current_user.carrier.orders
+      @orders = current_user.carrier.orders.where(status: [1,2,4,5])
       @carrier = current_user.carrier
+      @vehicles = current_user.carrier.vehicles
     else
       @orders = Order.all
     end
@@ -27,5 +28,26 @@ class OrdersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def accept
+    order = Order.find(params[:id])
+    order.status = 'Aceito'
+    order.save
+    redirect_to orders_path
+  end
+
+  def reject
+    order = Order.find(params[:id])
+    order.status = 'Recusado'
+    order.save
+    redirect_to orders_path
+  end
+
+  def select_vehicle
+    order = Order.find(params[:id])
+    order.vehicle_id = params[:vehicle_id]
+    order.save
+    redirect_to orders_path
   end
 end

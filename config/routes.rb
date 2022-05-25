@@ -6,5 +6,11 @@ Rails.application.routes.draw do
     resources :prices, only: [:new, :create, :edit, :update, :index, :destroy]
     resources :deadlines, only: [:new, :create, :edit, :update, :index, :destroy]
   end
-  resources :orders, only: [:index, :new, :create, :edit, :update]
+  resources :orders, only: [:index, :new, :create, :edit, :update] do
+    member do
+      patch 'accept'
+      patch 'reject'
+      patch 'select_vehicle'
+    end
+  end
 end

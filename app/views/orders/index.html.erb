@@ -1,24 +1,47 @@
 <section>
-  <%= link_to 'Cadastrar novo', new_order_path %>
+  <% if current_user.admin? %>
+    <%= link_to 'Cadastrar novo', new_order_path %>
+  <% end %>
   <% if @orders.empty? %>
   <p>Não há pedidos</p>
   <% else %>
-  <% @orders.each do |o| %>
+  <% @orders.each do |order| %>
     <div>
-      <p>Pedido: <%= o.code %></p>
-      <p>Status: <%= o.status %></p>
-      <p>Peso: <%= o.weight %>kg</p>
-      <p>Dimensão em M cúbicos: <%= o.cubic_size %></p>
-      <p>Endereço de retirada: <%= o.pickup_address %></p>
-      <h1>Informações do destinatario</h1>
-      <p>Endereço de entrega: <%= o.receiver_address %></p>
-      <p><%= o.receiver_name %></p>
-      <p>CPF: <%= o.receiver_cpf %></p>
-      <p>Telephone: <%= o.receiver_phone %></p>
-      <p>Frete: <%= o.price %>o</p>      
-      <p>Prazo: <%= o.deadline %> dias</p>
-      <p>Distancia: <%= o.distance %></p>
-      <p>Transportadora: <%= o.carrier.fantasy_name %></p>
+      <p>Pedido: <%= order.code %></p>
+      <p>Status: <%= order.status %></p>
+      <p>Peso: <%= order.weight %>kg</p>
+      <p>Dimensão em M cúbicos: <%= order.cubic_size %></p>
+      <p>Endereço de retirada: <%= order.pickup_address %></p>
+      <div>
+        <h1>Informações do destinatario</h1>
+        <p>Endereço de entrega: <%= order.receiver_address %></p>
+        <p><%= order.receiver_name %></p>
+        <p>CPF: <%= order.receiver_cpf %></p>
+        <p>Telephone: <%= order.receiver_phone %></p>        
+      </div>
+      <p>Frete: <%= order.price %>o</p>      
+        <p>Prazo: <%= order.deadline %> dias</p>
+        <p>Distancia: <%= order.distance %></p>
+        <p>Transportadora: <%= order.carrier.fantasy_name %></p>
+        <% if order.vehicle %>
+          <p>Veiculo: <%= order.vehicle.model %> | <%= order.vehicle.plate %></p>
+        <% end %>     
+      <div>
+        <% if user_signed_in? && !current_user.admin? %>
+          <div><%= button_to 'Aceitar', accept_order_path(order), method: :patch %></div>
+          <div><%= button_to 'Recusar', reject_order_path(order), method: :patch %></div>
+          <div>
+
+          <% if !order.vehicle %>
+            <%= form_with url: select_vehicle_order_path(order), method: :patch do |f|%>
+              <%= f.label :vehicle_id %>
+              <%= f.collection_select :vehicle_id, @vehicles, :id, :plate%>
+              <%= f.submit 'Designar Veiculo'%>
+            <% end %>
+          <% end %>
+          </div>
+        <% end %>   
+      </div>   
     </div>
   <% end %>
   <% end%>
