@@ -47,4 +47,5 @@ pt-BR:
         receiver_phone: "Telephone"
         deadline: "Prazo"
         carrier_id: "Transportadora"
+        carrier: "Transportadora"
         distance: "Distancia"

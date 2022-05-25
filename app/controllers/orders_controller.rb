@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+
   def index
     if current_user && !current_user.admin?
       @orders = current_user.carrier.orders
