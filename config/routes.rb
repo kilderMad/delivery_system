@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       patch 'accept'
       patch 'reject'
       patch 'select_vehicle'
+      patch 'finish'
     end
   end
 end

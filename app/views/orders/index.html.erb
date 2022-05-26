@@ -27,10 +27,13 @@
           <p>Veiculo: <%= order.vehicle.model %> | <%= order.vehicle.plate %></p>
         <% end %>     
       <div>
+      <div><%= button_to 'Ver detalhes de entrega', order_order_updates_path(order), method: :get %></div>
         <% if user_signed_in? && !current_user.admin? %>
           <div><%= button_to 'Aceitar', accept_order_path(order), method: :patch %></div>
-          <div><%= button_to 'Recusar', reject_order_path(order), method: :patch %></div>
+          <div><%= button_to 'Recusar', reject_order_path(order), method: :patch %></div>         
+          <div><%= button_to 'Finalizar', finish_order_path(order), method: :patch %></div>            
           <div><%= button_to 'Atualizar', new_order_order_update_path(order), method: :get %></div>
+          
           
           <% if !order.vehicle %>
             <%= form_with url: select_vehicle_order_path(order), method: :patch do |f|%>

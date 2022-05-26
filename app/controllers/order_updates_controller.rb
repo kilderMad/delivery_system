@@ -2,7 +2,9 @@ class OrderUpdatesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    #@orders = Order.find(params[:order_id])
+    @carrier = current_user.carrier
+    @order = Order.find(params[:order_id])
+    @order_updates = @order.order_updates
   end
 
   def new

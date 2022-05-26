@@ -62,4 +62,23 @@ describe 'user can' do
     expect(page).not_to have_content 'Designar Veiculo'
     expect(page).to have_content 'Veiculo: Partner | PCL-2932'
   end
+
+  it 'fisnish order successfully' do
+    carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
+    Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier)
+    Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier)
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, weight_min: 1, weight_max: 30, value_km: 0.05, carrier: carrier)
+    Price.create!(cbm_min: 1.501, cbm_max: 3.500, weight_min: 1, weight_max: 50, value_km: 0.08, carrier: carrier) 
+    user = User.create!(email: 'kilder@dll.com.br', password: 'password')
+    allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
+    order = Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
+    login_as(user)
+
+    visit root_path
+    click_on 'Pedidos'
+    click_on 'Finalizar'
+
+    expect(page).to have_content 'Status: Finalizado'
+  end
 end
