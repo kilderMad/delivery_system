@@ -14,5 +14,8 @@ Rails.application.routes.draw do
       patch 'select_vehicle'
       patch 'finish'
     end
+    collection do
+      get 'search'
+    end
   end
 end

@@ -25,6 +25,7 @@ describe 'user add update order' do
 
     expect(current_path).to eq orders_path
     expect(page).to have_content 'Pedido atualizado com sucesso'
+    expect(page).to have_content 'Status: Enviado'
   end
 
   it 'failed' do

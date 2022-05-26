@@ -57,4 +57,14 @@ class OrdersController < ApplicationController
     order.save
     redirect_to orders_path
   end
+
+  def search
+    @code = params["query"]
+    @order = Order.find_by("code LIKE ?", "%#{@code}%")
+    if @order 
+      @order_updates = @order.order_updates
+    else
+      redirect_to root_path, notice: "Código não encontrado"
+    end   
+  end
 end

@@ -1,0 +1,25 @@
+<div>
+  <% if @code %>
+  <div>
+    Pedido <%= @order.code%> - Status: <%= @order.status%>
+  </div>
+
+  <div>
+    <h1>Informações do veiculo</h1>
+    <p><%= @order.vehicle.brand %> <%= @order.vehicle.model %> <%= @order.vehicle.plate %></p>
+  </div>
+
+  <div>
+    <% if !@order_updates.empty? %>
+    <% @order_updates.each do |order_update| %>
+      <div class=" pb-2">
+        <%=l order_update.date %> - <%= order_update.hour %>
+        De <%= order_update.last_location %> para <%= order_update.next_location %>
+      </div>
+    <% end %>
+    <% else %>
+      <p>Pedido ainda não foi enviado</p>
+    <% end %>
+  </div>
+  <% end %>
+</div>
