@@ -1,5 +1,5 @@
 <div>
-  <% if @code %>
+  <% if @code && @order %>
   <div>
     Pedido <%= @order.code%> - Status: <%= @order.status%>
   </div>

@@ -59,8 +59,11 @@ class OrdersController < ApplicationController
   end
 
   def search
-    @code = params["query"]
-    @order = Order.find_by("code LIKE ?", "%#{@code}%")
+    @carrier = current_user.carrier
+    @code = params["q"]
+    unless @code.empty? 
+      @order = Order.find_by("code LIKE ?", "%#{@code}%")
+    end
     if @order 
       @order_updates = @order.order_updates
     else
