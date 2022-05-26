@@ -51,3 +51,9 @@ pt-BR:
         distance: "Distancia"
         vehicle_id: "Veiculo"
         vehicle: "Veiculo"
+      order_update:
+        date: "Data"
+        hour: "Hora"
+        last_location: "Chegou em"
+        next_location: "Saiu para"
+

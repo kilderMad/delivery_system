@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :deadlines, only: [:new, :create, :edit, :update, :index, :destroy]
   end
   resources :orders, only: [:index, :new, :create, :edit, :update] do
+    resources :order_updates, only: [:index, :new, :create]
     member do
       patch 'accept'
       patch 'reject'

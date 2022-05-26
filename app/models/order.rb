@@ -9,6 +9,7 @@ class Order < ApplicationRecord
 
   belongs_to :vehicle, optional: true
   belongs_to :carrier
+  has_many :order_updates
   before_validation :generator_code, :calc_deadline
 
   private

@@ -30,8 +30,8 @@
         <% if user_signed_in? && !current_user.admin? %>
           <div><%= button_to 'Aceitar', accept_order_path(order), method: :patch %></div>
           <div><%= button_to 'Recusar', reject_order_path(order), method: :patch %></div>
-          <div>
-
+          <div><%= button_to 'Atualizar', new_order_order_update_path(order), method: :get %></div>
+          
           <% if !order.vehicle %>
             <%= form_with url: select_vehicle_order_path(order), method: :patch do |f|%>
               <%= f.label :vehicle_id %>
