@@ -2,17 +2,20 @@
   <div>
     <%= form_with url: budgets_orders_path, method: :get do |f| %>
       <%= f.label :cubic_size %>
-      <%= f.text_field :cubic_size %>
+      <%= f.number_field :cubic_size %>
 
       <%= f.label :weight %>
-      <%= f.text_field :weight %>
+      <%= f.number_field :weight %>
 
       <%= f.label :distance %>
-      <%= f.text_field :distance %>
+      <%= f.number_field :distance %>
 
       <%= f.submit 'Fazer orçamento '%>
     <% end %>
   </div>
+  <div>
+    <%= link_to 'Historico de orçamentos', budget_histories_path %>
+  <div>
 </section>
 <section>
   <% if current_user && current_user.admin? %>

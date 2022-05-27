@@ -1,0 +1,5 @@
+<div>
+  <% @budget_histories.each do |result| %>
+    <%= result.carrier.fantasy_name %> - frete R$ <%= result.freight %> | <%= result.deadline %>
+  <% end %>
+</div>
