@@ -5,3 +5,5 @@ pt-BR:
   result:
     one: 'resultado'
     other: 'resultados'
+  inactive: 'desativada'
+  active: 'ativada'

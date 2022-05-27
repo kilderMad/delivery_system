@@ -17,6 +17,8 @@
         <th>Domínio</th>
         <th>Endereço</th>
         <th>Email</th>
+        <th>Ações</th>
+        <th>Estado</th>
       </tr>
     </thead>
     <tbody>
@@ -27,6 +29,12 @@
           <td><%= c.domain %></td>
           <td><%= c.address %></td>
           <td><%= c.email %></td>
+          <% if c.active? %>
+          <td><%= button_to 'Inativar', inactivate_carrier_path(c), method: :patch %></td>
+          <%else%>
+          <td><%= button_to 'Ativar', reactivate_carrier_path(c), method: :patch %></td>
+          <% end %>
+          <td><%= t c.status %></td>
         </tr>
     <%end%>
     </tbody>

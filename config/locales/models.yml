@@ -13,6 +13,8 @@ pt-BR:
         email: "Email"
         address: "Endereço"
         domain: "Domínio"
+        status:
+          inactive: "desativada"
       vehicle:
         brand: "Marca"
         plate: "Placa"

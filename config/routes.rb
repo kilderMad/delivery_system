@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :vehicles, only: [:new, :create, :show]
     resources :prices, only: [:new, :create, :edit, :update, :index, :destroy]
     resources :deadlines, only: [:new, :create, :edit, :update, :index, :destroy]
+    patch 'inactivate', on: :member
+    patch 'reactivate', on: :member
   end
   resources :orders, only: [:index, :new, :create, :edit, :update] do
     resources :order_updates, only: [:index, :new, :create]

@@ -43,4 +43,18 @@ class CarriersController < ApplicationController
       render :edit
     end
   end
+
+  def inactivate
+    carrier = Carrier.find(params[:id])
+    carrier.inactive!
+    carrier.save
+    redirect_to carriers_path
+  end
+
+  def reactivate
+    carrier = Carrier.find(params[:id])
+    carrier.active!
+    carrier.save
+    redirect_to carriers_path
+  end
 end
