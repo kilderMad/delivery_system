@@ -1,5 +1,9 @@
 <div>
+  <% unless @budget_histories.empty? %>
   <% @budget_histories.each do |result| %>
     <%= result.carrier.fantasy_name %> - frete R$ <%= result.freight %> | <%= result.deadline %>
+  <% end %>
+  <% else %>
+    <p>Sem historico</p>
   <% end %>
 </div>

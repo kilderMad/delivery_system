@@ -89,14 +89,13 @@ class OrdersController < ApplicationController
       deadlines.each do |dl|
         carrier = {}
         if price.carrier_id == dl.carrier_id && dl.carrier.active? && price.carrier.active?
-
           carrier[:frete] = price.value_km * distance.to_i
           carrier[:deadline] = dl.time_arrive
           carrier[:company] = dl.carrier.fantasy_name
           @results << carrier
+          history = BudgetHistory.create(carrier_id: dl.carrier_id, freight: price.value_km * distance.to_i, deadline: dl.time_arrive, weight: weight, distance: distance, cubic_size: cubic_size)       
         end
       end    
     end
-
   end
 end

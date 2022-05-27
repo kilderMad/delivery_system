@@ -17,4 +17,16 @@ describe 'user sees budget history' do
     expect(page).to have_content 'Pac - frete R$ 55.0 | 8'
     expect(page).to have_content 'DLL - frete R$ 130.0 | 5'
   end
+
+  it 'and there are no budget_histories' do
+    user = User.create!(email: 'kilder@gmail.com.br', password: 'password')
+    login_as(user)
+    carrier1 = Carrier.create!(fantasy_name: 'Pac', cnpj: '12345678901234', domain: 'pac.com.br', address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
+    carrier2 = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
+
+    visit orders_path
+    click_on 'Historico de orçamentos'
+    
+    expect(page).to have_content 'Sem historico'
+  end
 end

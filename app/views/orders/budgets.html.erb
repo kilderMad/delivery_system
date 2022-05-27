@@ -1,4 +1,5 @@
 <div>
+  <%= link_to 'Voltar', orders_path%>
   <%= @results.count %> <%= t(:result, count: @results.count) %> <%= t :found, count: @results.count %>
   <% @results.each do |result| %>
     <%= result[:company] %> - frete R$ <%= result[:frete] %> | <%= result[:deadline] %>
