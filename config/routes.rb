@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
+      get 'budgets'
     end
   end
 end

@@ -1,5 +1,21 @@
 <section>
-  <% if current_user.admin? %>
+  <div>
+    <%= form_with url: budgets_orders_path, method: :get do |f| %>
+      <%= f.label :cubic_size %>
+      <%= f.text_field :cubic_size %>
+
+      <%= f.label :weight %>
+      <%= f.text_field :weight %>
+
+      <%= f.label :distance %>
+      <%= f.text_field :distance %>
+
+      <%= f.submit 'Fazer orçamento '%>
+    <% end %>
+  </div>
+</section>
+<section>
+  <% if current_user && current_user.admin? %>
     <%= link_to 'Cadastrar novo', new_order_path %>
   <% end %>
   <% if @orders.empty? %>
@@ -28,13 +44,12 @@
         <% end %>     
       <div>
       <div><%= button_to 'Ver detalhes de entrega', order_order_updates_path(order), method: :get %></div>
-        <% if user_signed_in? && !current_user.admin? %>
+        <% if user_signed_in? && !current_user.admin? %>          
           <div><%= button_to 'Aceitar', accept_order_path(order), method: :patch %></div>
-          <div><%= button_to 'Recusar', reject_order_path(order), method: :patch %></div>         
+          <div><%= button_to 'Recusar', reject_order_path(order), method: :patch %></div>                   
           <div><%= button_to 'Finalizar', finish_order_path(order), method: :patch %></div>            
-          <div><%= button_to 'Atualizar', new_order_order_update_path(order), method: :get %></div>
-          
-          
+          <div><%= button_to 'Atualizar', new_order_order_update_path(order), method: :get %></div>  
+                 
           <% if !order.vehicle %>
             <%= form_with url: select_vehicle_order_path(order), method: :patch do |f|%>
               <%= f.label :vehicle_id %>

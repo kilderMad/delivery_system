@@ -16,7 +16,7 @@ describe 'user can' do
     visit root_path
     click_on 'Pedidos'
     click_on 'Aceitar'
-
+    
     expect(page).to have_content 'Status: Aceito'
   end
 

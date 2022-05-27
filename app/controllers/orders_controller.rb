@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :accept, :reject, :finish]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :accept, :reject, :finish, :budgets]
 
   def index
     if current_user && !current_user.admin?
@@ -59,8 +59,10 @@ class OrdersController < ApplicationController
   end
 
   def search
-    @carrier = current_user.carrier
-    @code = params["q"]
+    if current_user
+      @carrier = current_user.carrier
+    end
+    @code = params["query"]
     unless @code.empty? 
       @order = Order.find_by("code LIKE ?", "%#{@code}%")
     end
@@ -69,5 +71,32 @@ class OrdersController < ApplicationController
     else
       redirect_to root_path, notice: "Código não encontrado"
     end   
+  end
+
+  def budgets
+    if current_user
+      @carrier = current_user.carrier
+    end
+
+    weight = params[:weight]
+    cubic_size = params[:cubic_size]
+    distance = params[:distance]  
+    
+    prices = Price.where("cbm_min <= ? AND cbm_max >= ? AND weight_min <= ? AND weight_max >= ?", cubic_size, cubic_size, weight, weight)
+    deadlines = Deadline.where("distance_min <= ? AND distance_max >= ?", distance, distance)
+    @results = []
+    prices.each do |price|      
+      deadlines.each do |dl|
+        carrier = {}
+        if price.carrier_id == dl.carrier_id && dl.carrier.active? && price.carrier.active?
+
+          carrier[:frete] = price.value_km * distance.to_i
+          carrier[:deadline] = dl.time_arrive
+          carrier[:company] = dl.carrier.fantasy_name
+          @results << carrier
+        end
+      end    
+    end
+
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_232036) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_144726) do
   create_table "carriers", force: :cascade do |t|
     t.string "fantasy_name"
     t.string "cnpj"
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_232036) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 1
   end
 
   create_table "deadlines", force: :cascade do |t|
