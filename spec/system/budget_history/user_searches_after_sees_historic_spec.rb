@@ -15,15 +15,15 @@ describe 'User visits budget history' do
     fill_in 'cubic_size', with: '2'
     fill_in 'weight', with: '45'
     fill_in 'distance', with: '3000'
-    click_on "Fazer orçamento" 
+    click_on "Buscar" 
     click_on 'Voltar'
 
     fill_in 'cubic_size', with: '2'
     fill_in 'weight', with: '45'
     fill_in 'distance', with: '2001'
-    click_on "Fazer orçamento" 
+    click_on "Buscar" 
     click_on 'Voltar'
-    click_on 'Historico de orçamentos'
+    click_on 'Historico'
 
     expect(current_path).to eq budget_histories_path
     expect(page).to have_content 'DLL - frete R$ 270.0 | 14'

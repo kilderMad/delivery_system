@@ -4,6 +4,6 @@ describe 'User visit home' do
   it 'and view Sistema de Entregas' do
     visit root_path
 
-    expect(page).to have_content 'Sistema de Entregas'
+    expect(page).to have_content 'Home'
   end
 end

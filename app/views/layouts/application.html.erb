@@ -14,17 +14,21 @@
   <body>
     <header>
     <nav id='menu' class=' flex justify-between'>
-      <div class='flex'>
-        <div class='item'>
-          <h1><%= link_to 'Sistema de Entregas', root_path%></h1>
+      <div class='flex items-center'>
+        <div class='item'>          
+          <%= image_tag 'logo-white.png'%>
+        </div>
+        <div class='item_menu ml-2'>
+          <%= link_to 'Home', root_path %>
         </div>
         <% if user_signed_in? && current_user.admin? %>
-        <div class='item_menu mr-2'><%= link_to 'Transportadoras', carriers_path %></div>
-        <div class='item_menu ml-3'><%= link_to 'Pedidos', orders_path %></div>
+        <div class='item_menu mr-1'><%= link_to 'Transportadoras', carriers_path %></div>
+        <div class='item_menu ml-1'><%= link_to 'Pedidos', orders_path %></div>
         <%  elsif user_signed_in? && !current_user.admin? %>
-        <div class='item_menu ml-3'><%= link_to 'Dashboard', @carrier %></div>
-        <div class='item_menu ml-3'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
-        <div class='item_menu ml-3'><%= link_to 'Pedidos', orders_path %></div>
+        <div class='item_menu ml-1'><%= link_to 'Dashboard', @carrier %></div>
+        <div class='item_menu'><%= link_to 'Tabela de preços', carrier_prices_path(@carrier) %></div>
+        <div class='item_menu ml-1'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
+        <div class='item_menu ml-1'><%= link_to 'Pedidos', orders_path %></div>
         <% end %> 
       </div>
       <% if user_signed_in? %>
@@ -41,6 +45,8 @@
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
-    <%= yield %>
+    <div class=' px-[2%]'>
+      <%= yield %>
+    </div>
   </body>
 </html>

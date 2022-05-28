@@ -1,45 +1,45 @@
+<section>
+  <%= form_with model: [:order, @order_update], html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
+  <div class=' flex flex-col text-black bg-slate-300 justify-center items-center px-10 py-6 m-auto'>
+      <h2 class=' text-2xl font-bold pb-4'>Atualização de envio</h2>
+    <div class='flex flex-col'>
+      <div class='field pb-5'>
+        <%= f.label :date %><br />
+        <%= f.date_field :date, class:'rounded-2xl' %>
+        <% if @order_update.errors.any?%>
+          <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:date).first %></p>
+        <% end %>
+      </div>
 
-<%= form_with model: [:order, @order_update], html: {class:' h-[90%] items-center flex'}, data: { turbo: false } do |f| %>
-<div class=' flex flex-col text-black bg-slate-300 justify-center items-center p-10 m-auto'>
-    <h2 class=' text-2xl font-bold pb-10'>Cadastro de Prazos</h2>
-  <div class='flex'>
-  <div class='field pb-3'>
-    <%= f.label :date %><br />
-    <%= f.date_field :date, class:'rounded-2xl' %>
-    <% if @order_update.errors.any?%>
-      <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:date).first %></p>
-    <% end %>
-  </div>
+      <div class='field pb-5'>
+        <%= f.label :hour %><br />
+        <%= f.text_field :hour, class:'rounded-2xl' %>
+        <% if @order_update.errors.any?%>
+          <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:hour).first %></p>
+        <% end %>
+      </div>
 
-  <div class='field pb-5'>
-    <%= f.label :hour %><br />
-    <%= f.text_field :hour, class:'rounded-2xl' %>
-    <% if @order_update.errors.any?%>
-      <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:hour).first %></p>
-    <% end %>
-  </div>
+      <div class='field pb-5'>
+        <%= f.label :last_location %><br />
+        <%= f.text_field :last_location, class:'rounded-2xl' %>
+        <% if @order_update.errors.any?%>
+          <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:last_location).first %></p>
+        <% end %>
+      </div>
 
-  <div class='field pb-5'>
-    <%= f.label :last_location %><br />
-    <%= f.text_field :last_location, class:'rounded-2xl' %>
-    <% if @order_update.errors.any?%>
-      <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:last_location).first %></p>
-    <% end %>
-  </div>
-
-  <div class='field pb-5'>
-    <%= f.label :next_location %><br />
-    <%= f.text_field :next_location, class:'rounded-2xl' %>
-    <% if @order_update.errors.any?%>
-      <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:next_location).first %></p>
-    <% end %>
-  </div>
-
+      <div class='field pb-5'>
+        <%= f.label :next_location %><br />
+        <%= f.text_field :next_location, class:'rounded-2xl' %>
+        <% if @order_update.errors.any?%>
+          <p class=' text-red-600'><%= @order_update.errors.full_messages_for(:next_location).first %></p>
+        <% end %>
+      </div>
   
- 
-  <div class='button_send'>
-    <%= f.submit 'Enviar', class:"actions px-1 bg-slate-500 w-24 rounded-lg text-center my-2 mx-auto cursor-pointer border-2 border-slate-600 text-white "%>
+      <div class='button_send'>
+        <%= f.submit 'Enviar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-1 h-8 rounded-xl text-sm w-20 cursor-pointer text-xl'%>
+      </div>
+
+    </div>
   </div>
-<% end %>
-</div>
-</div>
+  <% end %>
+</section>

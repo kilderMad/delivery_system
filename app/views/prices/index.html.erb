@@ -1,32 +1,37 @@
-<section>
+<section> 
   <div>
-    <%= link_to 'Cadastrar novo', new_carrier_price_path(@carrier)%>
+    <div class= 'flex justify-between'>
+    <%= button_to 'Cadastrar novo', new_carrier_price_path(@carrier), method: 'get' , class: 'mb-4 bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded-xl text-sm mr-2 '%>
+    <%= button_to 'Voltar', root_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-14' %>
+    </div>
     <% if @prices.empty?%>
     <div>
       <p>Não há Preços cadastrados</p>
     </div>
   <% elsif @prices%>
-    <table class='prices'>
-    <thead>
-      <tr>
-        <th>Metros cúbicos</th>
-        <th>Peso</th>
-        <th>Valor por Km</th>
-        <th>Açoes</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @prices.each do |val|%>
-        <tr>
-          <td><%= val.cbm_min %> a <%= val.cbm_max %></td>
-          <td><%= val.weight_min %>kg a <%= val.weight_max %>kg</td>
-          <td>R$ <%= val.value_km %></td>
-          <td><%=link_to 'Editar', edit_carrier_price_path(@carrier, val) %> |
-           <%= button_to 'Excluir', carrier_price_path(@carrier, val), method: 'delete' %></td>
-        </tr>
-    <%end%>
-    </tbody>
-  </table>
+    <div class='bg-slate-300 p-5 flex justify-center'>
+      <table class='prices min-w-[60%]  bg-slate-300 p-5'>
+        <thead >
+          <tr class=' text-left'>
+            <th>Metros cúbicos</th>
+            <th>Peso</th>
+            <th>Valor por Km</th>
+            <th>Açoes</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @prices.each do |val|%>
+            <tr>
+              <td><%= val.cbm_min %> a <%= val.cbm_max %></td>
+              <td><%= val.weight_min %>kg a <%= val.weight_max %>kg</td>
+              <td>R$ <%= val.value_km %></td>
+              <td class='flex'><%=button_to 'Editar', edit_carrier_price_path(@carrier, val), method: 'get', class: 'bg-green-500 hover:bg-green-700 text-white px-2 rounded-xl text-sm w-16 mr-2 ' %>
+              <%= button_to 'Excluir', carrier_price_path(@carrier, val), method: 'delete' , class: 'bg-red-500 hover:bg-red-700 text-white px-2 rounded-xl text-sm w-16 mr-2 ' %></td>
+            </tr>
+        <%end%>
+        </tbody>
+      </table>
+    </div>
   <%end%>
   </div>
 </section>

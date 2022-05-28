@@ -28,7 +28,7 @@ describe 'User does budgets' do
     fill_in 'cubic_size', with: '2'
     fill_in 'weight', with: '45'
     fill_in 'distance', with: '3000'
-    click_on "Fazer orçamento" 
+    click_on "Buscar" 
 
     expect(page).to have_content 'DLL - frete R$ 270.0 | 14'
     expect(page).to have_content 'Pac - frete R$ 300.0 | 11'
@@ -50,7 +50,7 @@ describe 'User does budgets' do
     fill_in 'cubic_size', with: '2'
     fill_in 'weight', with: '45'
     fill_in 'distance', with: '3000'
-    click_on "Fazer orçamento" 
+    click_on "Buscar" 
 
     expect(page).not_to have_content 'DLL - frete R$ 270.0 | 14'
     expect(page).not_to have_content 'Pac - frete R$ 300.0 | 11'
@@ -68,7 +68,7 @@ describe 'User does budgets' do
     login_as(user)
 
     visit orders_path
-    click_on "Fazer orçamento" 
+    click_on "Buscar" 
 
     expect(page).not_to have_content 'DLL - frete R$ 270.0 | 14'
     expect(page).not_to have_content 'Pac - frete R$ 300.0 | 11'

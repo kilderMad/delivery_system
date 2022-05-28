@@ -11,7 +11,7 @@ describe 'user sees budget history' do
     BudgetHistory.create!(carrier: carrier2, freight: 130.0 , deadline: 5, weight: 10, distance: 2500, cubic_size: 1.1)
 
     visit orders_path
-    click_on 'Historico de orçamentos'
+    click_on 'Historico'
     
     expect(page).to have_content 'Pac - frete R$ 155.0 | 5'
     expect(page).to have_content 'Pac - frete R$ 55.0 | 8'
@@ -25,7 +25,7 @@ describe 'user sees budget history' do
     carrier2 = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
 
     visit orders_path
-    click_on 'Historico de orçamentos'
+    click_on 'Historico'
     
     expect(page).to have_content 'Sem historico'
   end
