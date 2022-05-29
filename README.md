@@ -10,6 +10,19 @@
 
 - Visitante poderá consultar seu código de rastreio, onde irá visualizar as atualizações de transporte do pacote sempre que forem atualizadas
 
+# Instruções de inicialização
+
+bundle install
+rails db:migrate
+rails db:seed
+
+para fazer login no sistema há 2 opções, admin ou usuario de transportadora
+
+- ADM => email: admin@live.com, senha: password
+- User DLL => email: joao123@dll.com.br, senha: password
+- User Pac => email: kilder123@dll.com.br, senha: password
+- User Correios => email: leticia123@dll.com.br, senha: password
+
 # gems adicionais
 
 - devise

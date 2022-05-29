@@ -30,8 +30,8 @@ describe 'User does budgets' do
     fill_in 'distance', with: '3000'
     click_on "Buscar" 
 
-    expect(page).to have_content 'DLL - frete R$ 270.0 | 14'
-    expect(page).to have_content 'Pac - frete R$ 300.0 | 11'
+    expect(page).to have_content 'DLL - frete R$ 270,00 | 14 dias úteis'
+    expect(page).to have_content 'Pac - frete R$ 300,00 | 11 dias úteis'
     expect(page).not_to have_content 'Correios'
     expect(page).to have_content '2 resultados encontrados'
   end
@@ -52,8 +52,9 @@ describe 'User does budgets' do
     fill_in 'distance', with: '3000'
     click_on "Buscar" 
 
-    expect(page).not_to have_content 'DLL - frete R$ 270.0 | 14'
-    expect(page).not_to have_content 'Pac - frete R$ 300.0 | 11'
+    expect(page).to have_content 'Resultados da busca para: 45kg | 2M cúbicos | 3000km'
+    expect(page).not_to have_content 'DLL - frete R$ 270,00 | 14 dias úteis'
+    expect(page).not_to have_content 'Pac - frete R$ 300,00 | 11 dias úteis'
     expect(page).to have_content '0 resultados encontrados'    
   end
   
@@ -70,8 +71,8 @@ describe 'User does budgets' do
     visit orders_path
     click_on "Buscar" 
 
-    expect(page).not_to have_content 'DLL - frete R$ 270.0 | 14'
-    expect(page).not_to have_content 'Pac - frete R$ 300.0 | 11'
+    expect(page).not_to have_content 'DLL - frete R$ 270,00 | 14 dias úteis'
+    expect(page).not_to have_content 'Pac - frete R$ 300,00 | 11 dias úteis'
     expect(page).to have_content '0 resultados encontrados'    
   end
 end

@@ -26,9 +26,9 @@ describe 'User visits budget history' do
     click_on 'Historico'
 
     expect(current_path).to eq budget_histories_path
-    expect(page).to have_content 'DLL - frete R$ 270.0 | 14'
-    expect(page).to have_content 'Pac - frete R$ 300.0 | 11'
-    expect(page).to have_content 'DLL - frete R$ 180.09 | 14'
-    expect(page).to have_content 'Pac - frete R$ 200.1 | 11'
+    expect(page).to have_content 'DLL - frete R$ 270,00 | 14 dias úteis | 45.0kg | 3000km | 2.0M cúbicos'
+    expect(page).to have_content 'Pac - frete R$ 300,00 | 11 dias úteis | 45.0kg | 3000km | 2.0M cúbicos'
+    expect(page).to have_content 'DLL - frete R$ 180,09 | 14 dias úteis | 45.0kg | 2001km | 2.0M cúbicos'
+    expect(page).to have_content 'Pac - frete R$ 200,10 | 11 dias úteis | 45.0kg | 2001km | 2.0M cúbicos'
   end
 end

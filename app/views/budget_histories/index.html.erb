@@ -1,8 +1,12 @@
 <div>
   <% unless @budget_histories.empty? %>
-  <% @budget_histories.each do |result| %>
-    <%= result.carrier.fantasy_name %> - frete R$ <%= result.freight %> | <%= result.deadline %>
-  <% end %>
+  <div class='flex flex-col'>
+    <% @budget_histories.each do |result| %>
+      <div class= 'py-3'>
+        <%= result.carrier.fantasy_name %> - frete <%= number_to_currency(result.freight, unit: "R$") %> | <%= result.deadline %> dias úteis | <%= result.weight %>kg | <%= result.distance %>km | <%= result.cubic_size %>M cúbicos
+      </div>
+    <% end %>
+  </div>
   <% else %>
     <p>Sem historico</p>
   <% end %>

@@ -13,9 +13,9 @@ describe 'user sees budget history' do
     visit orders_path
     click_on 'Historico'
     
-    expect(page).to have_content 'Pac - frete R$ 155.0 | 5'
-    expect(page).to have_content 'Pac - frete R$ 55.0 | 8'
-    expect(page).to have_content 'DLL - frete R$ 130.0 | 5'
+    expect(page).to have_content 'Pac - frete R$ 155,00 | 5 dias úteis | 10.0kg | 2000km | 1.5M cúbicos'
+    expect(page).to have_content 'Pac - frete R$ 55,00 | 8 dias úteis | 14.0kg | 1000km | 1.0M cúbicos'
+    expect(page).to have_content 'DLL - frete R$ 130,00 | 5 dias úteis | 10.0kg | 2500km | 1.1M cúbicos'
   end
 
   it 'and there are no budget_histories' do

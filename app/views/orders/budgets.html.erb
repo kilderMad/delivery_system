@@ -1,7 +1,15 @@
 <div>
-  <%= link_to 'Voltar', orders_path%>
-  <%= @results.count %> <%= t(:result, count: @results.count) %> <%= t :found, count: @results.count %>
-  <% @results.each do |result| %>
-    <%= result[:company] %> - frete R$ <%= result[:frete] %> | <%= result[:deadline] %>
-  <% end %>
+  <div class= 'flex justify-end mt-2'> 
+    <%= button_to 'Voltar', orders_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-14'%>
+  </div>
+
+  <p class='font-semibold'>Resultados da busca para: <%= @weight%>kg | <%= @cubic_size%>M cúbicos | <%= @distance %>km</p>
+  <div class='pt-2'>
+    <p class='pb-2 font-semibold'><%= @results.count %> <%= t(:result, count: @results.count) %> <%= t :found, count: @results.count %> </p>  
+    <% @results.each do |result| %>
+      <div class='pt-1'>
+        <%= result[:company] %> - frete <%= number_to_currency(result[:frete], unit: "R$") %> | <%= result[:deadline] %> dias úteis      
+      </div>
+    <% end %>
+  </div>
 </div>
