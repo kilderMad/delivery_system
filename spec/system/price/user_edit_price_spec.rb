@@ -47,7 +47,7 @@ describe 'User edit price' do
 
     expect(page).to have_content '0.001 a 0.6'
     expect(page).to have_content '0.0kg a 15.0kg'
-    expect(page).to have_content 'R$ 0.6'
+    expect(page).to have_content 'R$ 0,60'
   end
 
   it 'with blank fields' do

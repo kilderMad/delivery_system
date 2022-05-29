@@ -26,7 +26,7 @@ describe 'User register new price' do
 
     expect(page).to have_content '0.001 a 0.5'
     expect(page).to have_content '0.0kg a 10.0kg'
-    expect(page).to have_content 'R$ 0.5'
+    expect(page).to have_content 'R$ 0,50'
   end
 
   it 'success 2/2' do
@@ -57,11 +57,11 @@ describe 'User register new price' do
 
     expect(page).to have_content '0.001 a 0.5'
     expect(page).to have_content '11.0kg a 50.0kg'
-    expect(page).to have_content 'R$ 1.5'
+    expect(page).to have_content 'R$ 1,50'
 
     expect(page).to have_content '0.001 a 0.5'
     expect(page).to have_content '0.0kg a 10.0kg'
-    expect(page).to have_content 'R$ 0.5'
+    expect(page).to have_content 'R$ 0,50'
     
   end
 
