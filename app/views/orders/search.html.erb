@@ -3,12 +3,12 @@
   <div>
     Pedido <%= @order.code%> - Status: <%= @order.status%>
   </div>
-
-  <div>
-    <h1>Informações do veiculo</h1>
-    <p><%= @order.vehicle.brand %> <%= @order.vehicle.model %> <%= @order.vehicle.plate %></p>
-  </div>
-
+  <% if @order.vehicle %>
+    <div>
+      <h1>Informações do veiculo</h1>
+      <p><%= @order.vehicle.brand %> <%= @order.vehicle.model %> <%= @order.vehicle.plate %></p>
+    </div>
+  <% end %>
   <div>
     <% if !@order_updates.empty? %>
     <% @order_updates.each do |order_update| %>
