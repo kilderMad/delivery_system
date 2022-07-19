@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  root 'homepage#index'
   devise_for :users 
-  root to: "home#index"
   resources :budget_histories , only: [:index]
   resources :carriers, only: [:index, :new, :show, :new, :create, :edit, :update] do
     resources :vehicles, only: [:new, :create, :show]
