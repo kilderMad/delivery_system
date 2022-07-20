@@ -13,38 +13,39 @@
   </head>
 
   <body>
+  <!--
     <header>
     <nav id='menu' class=' flex justify-between'>
       <div class='flex items-center'>
         <div class='item'>          
-          <%= image_tag 'logo-white.png'%>
+          <%#= image_tag 'logo-white.png'%>
         </div>
         <div class='item_menu ml-2'>
-          <%= link_to 'Home', root_path %>
+          <%#= link_to 'Home', root_path %>
         </div>
-        <% if user_signed_in? && current_user.admin? %>
-        <div class='item_menu mr-1'><%= link_to 'Transportadoras', carriers_path %></div>
-        <div class='item_menu ml-1'><%= link_to 'Pedidos', orders_path %></div>
-        <%  elsif user_signed_in? && !current_user.admin? %>
-        <div class='item_menu ml-1'><%= link_to 'Dashboard', @carrier %></div>
-        <div class='item_menu'><%= link_to 'Tabela de preços', carrier_prices_path(@carrier) %></div>
-        <div class='item_menu ml-1'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
-        <div class='item_menu ml-1'><%= link_to 'Pedidos', orders_path %></div>
-        <% end %> 
+        <%# if user_signed_in? && current_user.admin? %>
+        <div class='item_menu mr-1'><%#= link_to 'Transportadoras', carriers_path %></div>
+        <div class='item_menu ml-1'><%#= link_to 'Pedidos', orders_path %></div>
+        <%#  elsif user_signed_in? && !current_user.admin? %>
+        <div class='item_menu ml-1'><%#= link_to 'Dashboard', @carrier %></div>
+        <div class='item_menu'><%#= link_to 'Tabela de preços', carrier_prices_path(@carrier) %></div>
+        <div class='item_menu ml-1'><%#= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
+        <div class='item_menu ml-1'><%#= link_to 'Pedidos', orders_path %></div>
+        <%# end %> 
       </div>
-      <% if user_signed_in? %>
+      <%# if user_signed_in? %>
       <div class='flex'>
-        <div class='px-4'><%= current_user.email %></div>
-        <div class=' text-red-600'><%= button_to 'Sair', destroy_user_session_path, method: 'delete' %></div> 
+        <div class='px-4'><%#= current_user.email %></div>
+        <div class=' text-red-600'><%#= button_to 'Sair', destroy_user_session_path, method: 'delete' %></div> 
       </div>
-      <% else %>
-      <div class=''><%= link_to 'Entrar', new_user_session_path %></div>
-      <% end %>         
+      <%# else %>
+      <div class=''><%#= link_to 'Entrar', new_user_session_path %></div>
+      <%# end %>         
     </nav>
-    </header>
+    </header> -->
     <div>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <p class="notice"><%#= notice %></p>
+      <p class="alert"><%#= alert %></p>
     </div>
     <div class=' px-[2%]'>
       <%= yield %>

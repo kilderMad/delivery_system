@@ -1,4 +1,4 @@
-import Hello from "./components/Hello"
+import Hello from "./components/App"
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
