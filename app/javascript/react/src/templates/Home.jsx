@@ -1,4 +1,5 @@
 import React from "react";
+import { Search } from "../components/Search";
 
 export const Home = () => {
   return (
@@ -19,20 +20,7 @@ export const Home = () => {
           Insira aqui o código de rastreamento do pedido ou da transportadora
           para localizar sua encomenda
         </p>
-        <form action="/orders/search" method="get">
-          <input
-            className="rounded-xl mt-3"
-            type="text"
-            name="query"
-            placeholder="insira seu código"
-          ></input>
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl ml-1 cursor-pointer"
-            type="submit"
-          >
-            Buscar Pedido
-          </button>
-        </form>
+        <Search />
       </div>
     </div>
   );

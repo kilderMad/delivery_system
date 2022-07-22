@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'homepage#index'
-  devise_for :users 
+  get '/orders/search/:code', to: 'homepage#index'
+  devise_for :users
   resources :budget_histories , only: [:index]
   resources :carriers, only: [:index, :new, :show, :new, :create, :edit, :update] do
     resources :vehicles, only: [:new, :create, :show]
@@ -20,6 +21,16 @@ Rails.application.routes.draw do
     collection do
       get 'search'
       get 'budgets'
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :orders, only: %i[index] do
+        collection do
+          get '/search/:code', to: 'orders#search'
+        end
+      end
     end
   end
 end

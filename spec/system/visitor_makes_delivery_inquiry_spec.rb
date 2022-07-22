@@ -18,7 +18,7 @@ describe 'visitor makes delivery inquiry' do
     visit root_path
     fill_in 'query', with: 'ABCBV1234512345'
     click_on 'Buscar Pedido'
-    
+
     expect(page).to have_content 'Pedido ABCBV1234512345'
     expect(page).to have_content 'Status: Enviado'
     expect(page).to have_content '05/12/2022 - 6:30'
@@ -27,7 +27,7 @@ describe 'visitor makes delivery inquiry' do
     expect(page).to have_content 'De Centro Tratamento DLL PE para Centro de distribuição Recife'
     expect(page).to have_content '13/12/2022 - 15:30'
     expect(page).to have_content 'De Centro de distribuição Recife para entrega ao destinatario'
-    expect(page).to have_content 'Pegeot Partner PCL-2932'   
+    expect(page).to have_content 'Pegeot Partner PCL-2932'
 
   end
 
@@ -49,7 +49,7 @@ describe 'visitor makes delivery inquiry' do
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     order = Order.create!(status: 2, vehicle: vehicle ,distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
       receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
-    
+
     visit root_path
     fill_in 'query', with: 'ABCBV1234512345'
     click_on 'Buscar Pedido'
@@ -59,5 +59,5 @@ describe 'visitor makes delivery inquiry' do
     expect(page).to have_content 'Pedido ainda não foi enviado'
     expect(page).to have_content 'Pegeot Partner PCL-2932'
   end
-  
+
 end

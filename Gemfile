@@ -41,6 +41,9 @@ gem "jsbundling-rails"
 
 gem "rack-cors"
 
+gem "selenium-webdriver"
+gem 'webdrivers', '~> 5.0'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
