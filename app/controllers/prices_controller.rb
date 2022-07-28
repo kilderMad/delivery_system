@@ -1,17 +1,18 @@
-class PricesController < ApplicationController 
+class PricesController < ApplicationController
   before_action :authenticate_user!
   def index
-    if current_user && !current_user.admin?  
-      @carrier = Carrier.find(params[:carrier_id])
-      @prices = @carrier.prices
-    end
+    return unless current_user && !current_user.admin?
+
+    @carrier = Carrier.find(params[:carrier_id])
+    @prices = @carrier.prices
   end
-  def new  
-    if current_user && !current_user.admin?  
-      @carrier = Carrier.find(params[:carrier_id])
-      @prices = @carrier.prices
-      @price = Price.new
-    end
+
+  def new
+    return unless current_user && !current_user.admin?
+
+    @carrier = Carrier.find(params[:carrier_id])
+    @prices = @carrier.prices
+    @price = Price.new
   end
 
   def create

@@ -1,5 +1,5 @@
-class OrderUpdatesController < ApplicationController 
-  before_action :authenticate_user!, only: [:new, :create]
+class OrderUpdatesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create]
 
   def index
     @carrier = current_user.carrier
@@ -19,7 +19,7 @@ class OrderUpdatesController < ApplicationController
     updates_params = params.require(:order_update).permit(:order_id, :last_location, :next_location, :date, :hour)
     @order_update = @order.order_updates.new(updates_params)
     if @order_update.save
-      redirect_to orders_path, notice: "Pedido atualizado com sucesso"
+      redirect_to orders_path, notice: 'Pedido atualizado com sucesso'
     else
       render :new
     end

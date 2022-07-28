@@ -1,18 +1,18 @@
 class DeadlinesController < ApplicationController
   before_action :authenticate_user!
   def index
-    if current_user && !current_user.admin?
-      @carrier = Carrier.find(params[:carrier_id])
-      @deadlines = @carrier.deadlines    
-    end
+    return unless current_user && !current_user.admin?
+
+    @carrier = Carrier.find(params[:carrier_id])
+    @deadlines = @carrier.deadlines
   end
 
   def new
-    if current_user && !current_user.admin?
-      @carrier = Carrier.find(params[:carrier_id])
-      @deadlines = @carrier.deadlines
-      @deadline = Deadline.new    
-    end
+    return unless current_user && !current_user.admin?
+
+    @carrier = Carrier.find(params[:carrier_id])
+    @deadlines = @carrier.deadlines
+    @deadline = Deadline.new
   end
 
   def create
