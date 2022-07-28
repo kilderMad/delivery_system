@@ -1,4 +1,4 @@
-<section> 
+<section>
   <div>
     <div class= 'flex justify-between'>
     <%= button_to 'Cadastrar novo', new_carrier_price_path(@carrier), method: 'get' , class: 'mb-4 bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded-xl text-sm mr-2 '%>
@@ -13,9 +13,9 @@
       <table class='prices min-w-[60%]  bg-slate-300 p-5'>
         <thead >
           <tr class=' text-left'>
-            <th>Metros cúbicos</th>
-            <th>Peso</th>
-            <th>Valor por Km</th>
+            <th>Peso cubado</th>
+            <th>Estado</th>
+            <th>Valor</th>
             <th>Açoes</th>
           </tr>
         </thead>
@@ -23,8 +23,8 @@
         <% @prices.each do |val|%>
             <tr>
               <td><%= val.cbm_min %> a <%= val.cbm_max %></td>
-              <td><%= val.weight_min %>kg a <%= val.weight_max %>kg</td>
-              <td><%=number_to_currency(val.value_km, unit: "R$")%></td>
+              <td><%= val.state %></td>
+              <td><%=number_to_currency(val.value, unit: "R$")%></td>
               <td class='flex'><%=button_to 'Editar', edit_carrier_price_path(@carrier, val), method: 'get', class: 'bg-green-500 hover:bg-green-700 text-white px-2 rounded-xl text-sm w-16 mr-2 ' %>
               <%= button_to 'Excluir', carrier_price_path(@carrier, val), method: 'delete' , class: 'bg-red-500 hover:bg-red-700 text-white px-2 rounded-xl text-sm w-16 mr-2 ' %></td>
             </tr>

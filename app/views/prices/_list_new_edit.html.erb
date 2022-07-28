@@ -18,33 +18,23 @@
         <p class=' text-red-600'><%= @price.errors.full_messages_for(:cbm_max).first %></p>
       <% end %>
     </div>
-    
-    <div class='flex'>
-      <div class='field pb-5'>
-        <%= f.label :weight_min %><br />
-        <%= f.text_field :weight_min, class:'rounded-2xl max-w-[150px] mr-2' %>
-        <% if @price.errors.any?%>
-          <p class=' text-red-600'><%= @price.errors.full_messages_for(:weight_min).first %></p>
-        <% end %>
-      </div>
 
-      <div class='field pb-5'>
-        <%= f.label :weight_max %><br />
-        <%= f.text_field :weight_max, class:'rounded-2xl max-w-[150px]' %>
-        <% if @price.errors.any?%>
-          <p class=' text-red-600'><%= @price.errors.full_messages_for(:weight_max).first %></p>
-        <% end %>
-      </div>
+    <div class='field pb-5'>
+      <%= f.label :state %><br />
+      <%= f.text_field :state, class:'rounded-2xl w-full mr-2' %>
+      <% if @price.errors.any?%>
+        <p class=' text-red-600'><%= @price.errors.full_messages_for(:state).first %></p>
+      <% end %>
     </div>
 
     <div class='field pb-5'>
-      <%= f.label :value_km %><br />
-      <%= f.text_field :value_km, class:'rounded-2xl w-full mr-2' %>
+      <%= f.label :value %><br />
+      <%= f.text_field :value, class:'rounded-2xl w-full mr-2' %>
       <% if @price.errors.any?%>
-        <p class=' text-red-600'><%= @price.errors.full_messages_for(:value_km).first %></p>
+        <p class=' text-red-600'><%= @price.errors.full_messages_for(:value).first %></p>
       <% end %>
     </div>
-  
+
     <div class='button_send'>
       <%= f.submit 'Enviar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-3 h-8 rounded-xl text-sm cursor-pointer text-xl'%>
     </div>

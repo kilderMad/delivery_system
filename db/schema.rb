@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_185948) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_28_190824) do
   create_table "budget_histories", force: :cascade do |t|
     t.decimal "freight"
     t.integer "deadline"
@@ -79,12 +79,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_185948) do
   create_table "prices", force: :cascade do |t|
     t.decimal "cbm_min"
     t.decimal "cbm_max"
-    t.decimal "value_km"
+    t.decimal "value"
     t.integer "carrier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "weight_min"
-    t.decimal "weight_max"
+    t.string "state"
     t.index ["carrier_id"], name: "index_prices_on_carrier_id"
   end
 
