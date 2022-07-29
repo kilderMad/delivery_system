@@ -6,8 +6,8 @@ describe 'User visits budget history' do
     carrier2 = Carrier.create!(fantasy_name: 'Pac', cnpj: '52345678901243', domain: 'pac.com.br', address: 'Av. Figueiras, 45', email: 'support@pac.com.br')
     Deadline.create!(distance_min: 2001, distance_max: 4000, time_arrive: 14, carrier: carrier1)
     Deadline.create!(distance_min: 2001, distance_max: 4000, time_arrive: 11, carrier: carrier2)
-    Price.create!(cbm_min: 1.501, cbm_max: 3.500, weight_min: 1, weight_max: 100, value_km: 0.09, carrier: carrier1)
-    Price.create!(cbm_min: 1.501, cbm_max: 3.500, weight_min: 1, weight_max: 100, value_km: 0.10, carrier: carrier2)
+    Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.09, carrier: carrier1)
+    Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.10, carrier: carrier2)
     user = User.create!(email: 'kilder@gmail.com.br', password: 'password')
     login_as(user)
 
@@ -15,13 +15,13 @@ describe 'User visits budget history' do
     fill_in 'cubic_size', with: '2'
     fill_in 'weight', with: '45'
     fill_in 'distance', with: '3000'
-    click_on "Buscar" 
+    click_on 'Buscar'
     click_on 'Voltar'
 
     fill_in 'cubic_size', with: '2'
     fill_in 'weight', with: '45'
     fill_in 'distance', with: '2001'
-    click_on "Buscar" 
+    click_on 'Buscar'
     click_on 'Voltar'
     click_on 'Historico'
 

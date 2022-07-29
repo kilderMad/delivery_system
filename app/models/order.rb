@@ -20,15 +20,15 @@ class Order < ApplicationRecord
 
   def calc_deadline
     if self.carrier
-      deadline = Deadline.where(carrier: self.carrier_id).where("distance_min <= ? AND distance_max >= ?", self.distance, self.distance)
+      deadline = Deadline.where(carrier: carrier_id).where('distance_min <= ? AND distance_max >= ?', distance, distance)
       if !deadline.last.nil?
         self.deadline = deadline[0].time_arrive
       end
     end
 
     if self.deadline
-      price = Price.where(carrier: self.carrier_id).where("cbm_min <= ? AND cbm_max >= ? AND weight_min <= ? AND weight_max >= ?", self.cubic_size, self.cubic_size, self.weight, self.weight)
-      self.price = price.last.value_km * self.distance
+      price = Price.where(carrier: carrier_id).where('cbm_min <= ? AND cbm_max >= ?', cubic_size, cubic_size)
+      self.price = price.last.value * distance
     end
   end
 end

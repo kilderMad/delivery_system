@@ -9,15 +9,15 @@ describe 'user register new order' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
     Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier)
     Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, weight_min: 1, weight_max: 30, value_km: 0.05, carrier: carrier)
-    Price.create!(cbm_min: 1.501, cbm_max: 3.500, weight_min: 1, weight_max: 50, value_km: 0.08, carrier: carrier) 
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.05, carrier: carrier)
+    Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     user = User.create!(email: 'kilder@gmail.com.br', password: 'password')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     login_as(user)
     visit root_path
     click_on 'Pedidos'
     click_on 'Cadastrar novo'
-    
+
     fill_in 'Peso', with: '10'
     fill_in 'Metros cúbicos', with: '1'
     fill_in 'Destinatário', with: 'Kilder costa filho'
@@ -50,15 +50,15 @@ describe 'user register new order' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
     Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier)
     Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, weight_min: 1, weight_max: 30, value_km: 0.05, carrier: carrier)
-    Price.create!(cbm_min: 1.501, cbm_max: 3.500, weight_min: 1, weight_max: 50, value_km: 0.08, carrier: carrier) 
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.05, carrier: carrier)
+    Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     user = User.create!(email: 'kilder@gmail.com.br', password: 'password')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     login_as(user)
     visit root_path
     click_on 'Pedidos'
     click_on 'Cadastrar novo'
-    
+
     fill_in 'Peso', with: ''
     fill_in 'Metros cúbicos', with: ''
     fill_in 'Destinatário', with: ''

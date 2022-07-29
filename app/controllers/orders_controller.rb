@@ -79,18 +79,18 @@ class OrdersController < ApplicationController
     @cubic_size = params[:cubic_size]
     @distance = params[:distance]
 
-    prices = Price.where('cbm_min <= ? AND cbm_max >= ? AND weight_min <= ? AND weight_max >= ?', @cubic_size, @cubic_size, @weight, @weight)
+    prices = Price.where('cbm_min <= ? AND cbm_max >= ?', @cubic_size, @cubic_size)
     deadlines = Deadline.where('distance_min <= ? AND distance_max >= ?', @distance, @distance)
     @results = []
     prices.each do |price|
       deadlines.each do |dl|
         carrier = {}
         if price.carrier_id == dl.carrier_id && dl.carrier.active? && price.carrier.active?
-          carrier[:frete] = price.value_km * @distance.to_i
+          carrier[:frete] = price.value * @distance.to_i
           carrier[:deadline] = dl.time_arrive
           carrier[:company] = dl.carrier.fantasy_name
           @results << carrier
-          BudgetHistory.create(carrier_id: dl.carrier_id, freight: price.value_km * @distance.to_i, 
+          BudgetHistory.create(carrier_id: dl.carrier_id, freight: price.value * @distance.to_i,
                                deadline: dl.time_arrive, weight: @weight, distance: @distance, cubic_size: @cubic_size)
         end
       end
