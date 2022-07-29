@@ -9,7 +9,7 @@ describe 'user can' do
     Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     #allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
-    order = Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    order = Order.create!( zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
     receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
     login_as(user)
 
@@ -29,7 +29,7 @@ describe 'user can' do
     Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
-    Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla',
+    Order.create!( zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla',
                   receiver_address: 'blableblu', receiver_name: 'Madson kilder filho',
                   receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
     login_as(user)
@@ -51,7 +51,7 @@ describe 'user can' do
     Vehicle.create!(plate: 'PCL-2932', brand: 'Pegeot', model: 'Partner', year: '2022', capacity: 3000, carrier: carrier)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     #allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
-    order = Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    order = Order.create!( zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
     receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
     login_as(user)
 
@@ -73,7 +73,7 @@ describe 'user can' do
     Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
-    order = Order.create!(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    order = Order.create!( zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
     receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
     login_as(user)
 

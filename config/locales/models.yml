@@ -37,7 +37,6 @@ pt-BR:
         carrier_id: "Transportadora"
         carrier: "Transportadora"
       order:
-        weight: "Peso"
         code: "Código"
         status: "Status"
         cubic_size: "Metros cúbicos"
@@ -49,7 +48,7 @@ pt-BR:
         deadline: "Prazo"
         carrier_id: "Transportadora"
         carrier: "Transportadora"
-        distance: "Distancia"
+        zip_code: "CEP"
         vehicle_id: "Veiculo"
         vehicle: "Veiculo"
       order_update:

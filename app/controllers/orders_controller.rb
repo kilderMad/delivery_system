@@ -21,8 +21,8 @@ class OrdersController < ApplicationController
   def create
     @carriers = Carrier.all
     params_order = params.require(:order).permit(:status, :code, :cubic_size, :pickup_address, :receiver_address,
-                                                 :receiver_cpf, :receiver_name, :receiver_phone, :weight, :carrier_id,
-                                                 :deadline, :distance, :price)
+                                                 :receiver_cpf, :receiver_name, :receiver_phone, :carrier_id,
+                                                 :deadline, :price, :zip_code)
     @order = Order.new(params_order)
     if @order.save
       redirect_to orders_path, notice: 'Pedido registrado e enviado com sucesso'

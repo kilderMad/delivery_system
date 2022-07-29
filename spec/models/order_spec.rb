@@ -3,33 +3,25 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
   describe '#valid' do
     it 'must be price' do
-      order = Order.new(price: '')
-      order.valid?
-      expect(order.errors.include? :price).to eq false
+      carrier = create :carrier
+      create :price, carrier: carrier
+      order = create :order, carrier: carrier
+
+      expect(order.price).not_to be_nil
     end
 
     it 'must be deadline' do
-      order = Order.new(deadline: '')
-      order.valid?
-      expect(order.errors.include? :deadline).to eq false
+      carrier = create :carrier
+      create :price, carrier: carrier
+      order = create :order, carrier: carrier
+
+      expect(order.deadline).not_to be_nil
     end
 
     it 'cubic_size not must be blanck' do
       order = Order.new(cubic_size: '')
       order.valid?
       expect(order.errors.include? :cubic_size).to eq true
-    end
-
-    it 'weight not must be blanck' do
-      order = Order.new(weight: '')
-      order.valid?
-      expect(order.errors.include? :weight).to eq true
-    end
-
-    it 'distance not must be blanck' do
-      order = Order.new(distance: '')
-      order.valid?
-      expect(order.errors.include? :distance).to eq true
     end
 
     it 'pickup_address not must be blanck' do
@@ -80,28 +72,10 @@ RSpec.describe Order, type: :model do
       expect(order.errors[:receiver_cpf]).to include("não é um número")
     end
 
-    it 'weight must be greater than or equal to 0' do
-      order = Order.new(weight: '-1')
-      order.valid?
-      expect(order.errors[:weight]).to include("deve ser maior ou igual a 0")
-    end
-
     it 'cubic_size must be greater than or equal to 0' do
       order = Order.new(cubic_size: '-1')
       order.valid?
       expect(order.errors[:cubic_size]).to include("deve ser maior ou igual a 0")
-    end
-
-    it 'distance must be greater than 0' do
-      order = Order.new(distance: '-1')
-      order.valid?
-      expect(order.errors[:distance]).to include("deve ser maior que 0")
-    end
-  end
-
-  describe '.calc_freigth' do
-    it 'calculate freight from cep' do
-      order = create :order
     end
   end
 end

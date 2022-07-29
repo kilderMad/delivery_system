@@ -8,16 +8,12 @@ describe 'user visits orders' do
                                address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
     carrier2 = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br',
                                address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier1)
-    Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier2)
-    Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier1)
-    Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier2)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.05, carrier: carrier1)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.08, carrier: carrier2)
-    order1 = Order.new(distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla',
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', deadline: 3, value: 80.0, carrier: carrier1)
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', deadline: 4, value: 100, carrier: carrier2)
+    order1 = Order.new(zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla',
                        receiver_address: 'blableblu', receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699',
                        receiver_phone: '81981316988', carrier: carrier1)
-    order2 = Order.new(distance: 1000, weight: 45.0, cubic_size: 0.5, pickup_address: 'plablabla',
+    order2 = Order.new(zip_code: '50720-540', cubic_size: 0.5, pickup_address: 'plablabla',
                        receiver_address: 'plableblu', receiver_name: 'Simba kilder ferreira', receiver_cpf: '12215516699',
                        receiver_phone: '90991316988', carrier: carrier2)
     order1.save
@@ -32,9 +28,9 @@ describe 'user visits orders' do
     expect(page).to have_content 'Status: Pendente de aceite'
     expect(page).to have_content 'Transportadora: DLL'
     expect(page).to have_content 'Dimensão em M cúbicos: 0.4'
-    expect(page).to have_content 'Peso: 1.0kg'
-    expect(page).to have_content 'Prazo: 8 dias'
-    expect(page).to have_content 'Frete: 100'
+    expect(page).to have_content 'Prazo: 4 dias'
+    expect(page).to have_content 'Frete: 100.0'
+    expect(page).to have_content 'CEP: 50720-570'
     expect(page).to have_content 'Endereço de retirada: blablabla'
     expect(page).to have_content 'Informações do destinatario'
     expect(page).to have_content 'Madson kilder filho'
@@ -45,9 +41,9 @@ describe 'user visits orders' do
     expect(page).to have_content 'Status: Pendente de aceite'
     expect(page).to have_content 'Transportadora: DLL'
     expect(page).to have_content 'Dimensão em M cúbicos: 0.5'
-    expect(page).to have_content 'Peso: 1.0kg'
-    expect(page).to have_content 'Frete: 80'
-    expect(page).to have_content 'Prazo: 4 dias'
+    expect(page).to have_content 'Frete: 80.0'
+    expect(page).to have_content 'Prazo: 3 dias'
+    expect(page).to have_content 'CEP: 50720-540'
     expect(page).to have_content 'Endereço de retirada: plablabla'
     expect(page).to have_content 'Informações do destinatario'
     expect(page).to have_content 'Simba kilder ferreira'
@@ -61,18 +57,14 @@ describe 'user visits orders' do
                                address: 'Av. Republica do Libano, 145', email: 'support@pac.com.br')
     carrier2 = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br',
                                address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
-    Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier1)
-    Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier2)
-    Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier1)
-    Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier2)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.05, carrier: carrier1)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.08, carrier: carrier2)
-    Order.create!(distance: 1000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla',
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', deadline: 8, value: 160, carrier: carrier1)
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', deadline: 8, value: 160, carrier: carrier2)
+    Order.create!(zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla',
                   receiver_address: 'blableblu', receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699',
-                  receiver_phone: '81981316988', deadline: 6, carrier: carrier1)
-    Order.create!(distance: 2000, status: 2, weight: 41.3, cubic_size: 0.5, pickup_address: 'plablabla',
+                  receiver_phone: '81981316988', carrier: carrier1)
+    Order.create!(zip_code: '50720-570', status: 2, cubic_size: 0.5, pickup_address: 'plablabla',
                   receiver_address: 'plableblu', receiver_name: 'Simba kilder ferreira', receiver_cpf: '12215516699',
-                  receiver_phone: '90991316988', deadline: 5, carrier: carrier2)
+                  receiver_phone: '90991316988', carrier: carrier2)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     login_as(user)
     visit root_path
@@ -83,7 +75,6 @@ describe 'user visits orders' do
     expect(page).to have_content 'Status: Aceito'
     expect(page).to have_content 'Transportadora: DLL'
     expect(page).to have_content 'Dimensão em M cúbicos: 0.5'
-    expect(page).to have_content 'Peso: 41.3kg'
     expect(page).to have_content 'Prazo: 8 dias'
     expect(page).to have_content 'Frete: 160'
     expect(page).to have_content 'Endereço de retirada: plablabla'
@@ -96,7 +87,6 @@ describe 'user visits orders' do
     expect(page).not_to have_content 'Transportadora: Pac'
     expect(page).not_to have_content 'Dimensão em M cúbicos: 0.4'
     expect(page).not_to have_content 'Frete: 50'
-    expect(page).not_to have_content 'Peso: 1.0kg'
     expect(page).not_to have_content 'Endereço de retirada: blablabla'
     expect(page).not_to have_content 'Madson kilder filho'
     expect(page).not_to have_content 'CPF: 71315516699'
