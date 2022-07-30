@@ -74,26 +74,16 @@ class OrdersController < ApplicationController
 
   def budgets
     current_user && @carrier = current_user.carrier
-
-    @weight = params[:weight]
     @cubic_size = params[:cubic_size]
-    @distance = params[:distance]
+    @cep = params[:cep]
 
-    prices = Price.where('cbm_min <= ? AND cbm_max >= ?', @cubic_size, @cubic_size)
-    deadlines = Deadline.where('distance_min <= ? AND distance_max >= ?', @distance, @distance)
-    @results = []
-    prices.each do |price|
-      deadlines.each do |dl|
-        carrier = {}
-        if price.carrier_id == dl.carrier_id && dl.carrier.active? && price.carrier.active?
-          carrier[:frete] = price.value * @distance.to_i
-          carrier[:deadline] = dl.time_arrive
-          carrier[:company] = dl.carrier.fantasy_name
-          @results << carrier
-          BudgetHistory.create(carrier_id: dl.carrier_id, freight: price.value * @distance.to_i,
-                               deadline: dl.time_arrive, weight: @weight, distance: @distance, cubic_size: @cubic_size)
-        end
-      end
+    return unless (@budgets = []) && Services.ask_cep(@cep)
+
+    @budgets = Price.where('cbm_min <= ? AND cbm_max >= ? AND state = ?',
+                           @cubic_size, @cubic_size, Services.ask_cep(@cep))
+    @budgets.each do |budget|
+      BudgetHistory.create(carrier: budget.carrier, freight: budget.value, deadline: budget.deadline,
+                           zip_code: @cep, cubic_size: @cubic_size)
     end
   end
 end

@@ -1,14 +1,14 @@
 <div>
-  <div class= 'flex justify-end mt-2'> 
+  <div class= 'flex justify-end mt-2'>
     <%= button_to 'Voltar', orders_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-14'%>
   </div>
 
-  <p class='font-semibold'>Resultados da busca para: <%= @weight%>kg | <%= @cubic_size%>M cúbicos | <%= @distance %>km</p>
+  <p class='font-semibold'>Resultados da busca para: <%= @cep%> | <%= @cubic_size%>M cúbicos
   <div class='pt-2'>
-    <p class='pb-2 font-semibold'><%= @results.count %> <%= t(:result, count: @results.count) %> <%= t :found, count: @results.count %> </p>  
-    <% @results.each do |result| %>
+    <p class='pb-2 font-semibold'><%= @budgets.count %> <%= t(:result, count: @budgets.count) %> <%= t :found, count: @budgets.count %> </p>
+    <% @budgets.each do |budget| %>
       <div class='pt-1'>
-        <%= result[:company] %> - frete <%= number_to_currency(result[:frete], unit: "R$") %> | <%= result[:deadline] %> dias úteis      
+        <%= budget.carrier.fantasy_name %> - frete <%= number_to_currency(budget.value, unit: "R$") %> | <%= budget.deadline %> dias úteis
       </div>
     <% end %>
   </div>

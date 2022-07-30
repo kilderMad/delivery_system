@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_29_164954) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_29_214916) do
   create_table "budget_histories", force: :cascade do |t|
     t.decimal "freight"
     t.integer "deadline"
-    t.decimal "weight"
-    t.integer "distance"
     t.decimal "cubic_size"
     t.integer "carrier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "zip_code"
     t.index ["carrier_id"], name: "index_budget_histories_on_carrier_id"
   end
 

@@ -17,12 +17,14 @@ class Order < ApplicationRecord
   def calc_freigth
     return unless zip_code || cubic_size
 
-    response = Faraday.get("https://viacep.com.br/ws/#{zip_code}/json/")
-    response_data = JSON.parse(response.body)
-
-    price = Price.where(carrier: carrier_id).where('cbm_min <= ? AND cbm_max >= ? AND state = ?', cubic_size, cubic_size, response_data['uf'])
+    price = Price.where(carrier: carrier_id).where('cbm_min <= ? AND cbm_max >= ? AND state = ?', cubic_size, cubic_size, gets_uf['uf'])
 
     self.price = price.last.value
     self.deadline = price.last.deadline
+  end
+
+  def gets_uf
+    response = Faraday.get("https://viacep.com.br/ws/#{zip_code}/json/")
+    JSON.parse(response.body)
   end
 end
