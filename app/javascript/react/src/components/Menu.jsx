@@ -20,7 +20,7 @@ export const Menu = () => {
         </div>
         <div className="flex">
           <div className="px-4">Current-user</div>
-          <a path="/users/sign_in">Entrar</a>
+          <a href="/users/sign_in">Entrar</a>
         </div>
         <Button path="/users/sign_out" method="delete" title="Sair" />
       </nav>

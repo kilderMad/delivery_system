@@ -8,8 +8,6 @@ export const Search = () => {
   return (
     <form action="/orders/search" method="get">
       <input
-        id="query"
-        name="query"
         value={code}
         onChange={(e) => setCode(e.target.value)}
         className="rounded-xl mt-3"

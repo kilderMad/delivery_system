@@ -8,7 +8,7 @@ export const Button = ({ title, path, method, onClick }) => {
 
   return (
     <div>
-      {onClick ? (
+      {!onClick ? (
         <form action={path} method="post">
           <input type="hidden" name="_method" value={method} />
           <button type="submit" className="text-red-600">
