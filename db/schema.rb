@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_185948) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_29_214916) do
   create_table "budget_histories", force: :cascade do |t|
     t.decimal "freight"
     t.integer "deadline"
-    t.decimal "weight"
-    t.integer "distance"
     t.decimal "cubic_size"
     t.integer "carrier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "zip_code"
     t.index ["carrier_id"], name: "index_budget_histories_on_carrier_id"
   end
 
@@ -59,7 +58,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_185948) do
     t.string "code"
     t.integer "status", default: 1
     t.decimal "cubic_size"
-    t.decimal "weight"
     t.string "pickup_address"
     t.string "receiver_address"
     t.string "receiver_name"
@@ -70,8 +68,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_185948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price"
-    t.integer "distance"
     t.integer "vehicle_id"
+    t.string "zip_code"
     t.index ["carrier_id"], name: "index_orders_on_carrier_id"
     t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
@@ -79,12 +77,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_185948) do
   create_table "prices", force: :cascade do |t|
     t.decimal "cbm_min"
     t.decimal "cbm_max"
-    t.decimal "value_km"
+    t.decimal "value"
     t.integer "carrier_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "weight_min"
-    t.decimal "weight_max"
+    t.string "state"
+    t.integer "deadline"
     t.index ["carrier_id"], name: "index_prices_on_carrier_id"
   end
 

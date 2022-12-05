@@ -6,9 +6,9 @@ class CarriersController < ApplicationController
 
   def show
     @carrier = Carrier.find(params[:id])
-    if current_user && !current_user.admin?
-      @vehicles = @carrier.vehicles
-    end
+    return unless current_user && !current_user.admin?
+
+    @vehicles = @carrier.vehicles
   end
 
   def new

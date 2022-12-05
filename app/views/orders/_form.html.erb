@@ -4,10 +4,10 @@
     <h2 class=' text-2xl font-bold pb-4'>Cadastro de Transportadora</h2>
     <div class='flex flex-col'>
   <div class='field pb-3'>
-    <%= f.label :weight %><br />
-    <%= f.text_field :weight, class:'rounded-2xl' %>
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code, class:'rounded-2xl' %>
     <% if @order.errors.any?%>
-      <p class=' text-red-600'><%= @order.errors.full_messages_for(:weight).first %></p>
+      <p class=' text-red-600'><%= @order.errors.full_messages_for(:zip_code).first %></p>
     <% end %>
   </div>
 
@@ -67,14 +67,6 @@
     <% end %>
   </div>
 
-  <div class='field pb-5'>
-    <%= f.label :distance %><br />
-    <%= f.number_field :distance, class:'rounded-2xl' %>
-    <% if @order.errors.any?%>
-      <p class=' text-red-600'><%= @order.errors.full_messages_for(:distance).first %></p>
-    <% end %>
-  </div>
-  
   <div class='button_send'>
     <%= f.submit 'Enviar', class: 'bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-3 rounded-xl text-sm cursor-pointer text-xl'%>
   </div>

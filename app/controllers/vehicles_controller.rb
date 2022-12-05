@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
-  def show    
-    @vehicle =  Vehicle.find(params[:id])
+  def show
+    @vehicle = Vehicle.find(params[:id])
     @carrier = Carrier.find(params[:carrier_id])
   end
 
@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
     vehicle_params = params.require(:vehicle).permit(:brand, :model, :plate, :capacity, :year)
     @carrier = Carrier.find(params[:carrier_id])
     @vehicle = @carrier.vehicles.new(vehicle_params)
-    if @vehicle.save 
+    if @vehicle.save
       redirect_to @carrier, notice: 'Veiculo cadastrado'
     else
       render :new

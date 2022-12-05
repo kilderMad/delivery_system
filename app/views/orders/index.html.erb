@@ -6,32 +6,29 @@
     <%= form_with url: budgets_orders_path, method: :get do |f| %>
       <h1 class='text-lg font-semibold pb-2'>Orçamento<h1>
       <div class='flex flex-col pr-4'>
-        
+
         <%= f.label :cubic_size %>
         <%= f.number_field :cubic_size, class:'rounded-lg h-7' %>
-        
-        <%= f.label :weight %>
-        <%= f.number_field :weight, class:'rounded-lg h-7' %>
-        
-        <%= f.label :distance %>
-        <%= f.number_field :distance, class:'rounded-lg h-7' %>
-        
+
+        <%= f.label :cep %>
+        <%= f.number_field :cep, class:'rounded-lg h-7' %>
+
         <%= f.submit 'Buscar', class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl ml-1 cursor-pointer w-20 my-3 '%>
-        
+
       </div>
     <% end %>
     <div>
     <%= link_to 'Historico', budget_histories_path, class: 'bg-gray-400 hover:bg-gray-500 text-white py-1 px-2 rounded-xl w-20 ml-1 cursor-pointer mt-3' %>
     </div>
-    
-  </div> 
 
-  
+  </div>
+
+
     <div class='orders-container flex w-11/12 flex-wrap justify-center'>
 
       <% if @orders.empty? %>
       <p>Não há pedidos</p>
-      <% else %> 
+      <% else %>
 
       <% @orders.each do |order| %>
       <div class='order py-5 px-5 w-1/4 bg-slate-200 mb-2 mr-2 flex items-center justify-center'>
@@ -39,7 +36,6 @@
           <div>
             <p class=' text-lg font-semibold pb-4'>Pedido: <%= order.code %></p>
             <p class='font-bold'>Status: <%= order.status %></p>
-            <p>Peso: <%= order.weight %>kg</p>
             <p>Dimensão em M cúbicos: <%= order.cubic_size %></p>
             <p>Endereço de retirada: <%= order.pickup_address %></p>
           </div>
@@ -47,36 +43,36 @@
           <div class='py-3'>
             <h1 class=' text-lg font-semibold'>Informações do destinatario</h1>
             <p>Nome: <%= order.receiver_name %></p>
-            <p>Endereço de entrega: <%= order.receiver_address %></p>            
+            <p>Endereço de entrega: <%= order.receiver_address %></p>
             <p>CPF: <%= order.receiver_cpf %></p>
-            <p>Telephone: <%= order.receiver_phone %></p>        
+            <p>Telephone: <%= order.receiver_phone %></p>
           </div>
 
           <div class='pb-3'>
-            <p>Frete: <%= order.price %></p>      
+            <p>CEP: <%= order.zip_code %></p>
+            <p>Frete: <%= order.price %></p>
             <p>Prazo: <%= order.deadline %> dias</p>
-            <p>Distancia: <%= order.distance %></p>
             <p>Transportadora: <%= order.carrier.fantasy_name %></p>
             <% if order.vehicle %>
               <p>Veiculo: <%= order.vehicle.model %> | <%= order.vehicle.plate %></p>
-            <% end %>     
+            <% end %>
           </div>
 
           <div>
             <div><%= button_to 'Ver detalhes de entrega', order_order_updates_path(order), method: :get, class: 'bg-gray-400 hover:bg-gray-500 text-white py-1 px-2 rounded-xl text-sm mr-2 ' %></div>
-            <% if user_signed_in? && !current_user.admin? %> 
-              <div class= 'flex flex-col'> 
-                <div class= 'flex mt-2'>        
+            <% if user_signed_in? && !current_user.admin? %>
+              <div class= 'flex flex-col'>
+                <div class= 'flex mt-2'>
                   <%= button_to 'Aceitar', accept_order_path(order), method: :patch, class: 'bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2 '%>
-                  <%= button_to 'Recusar', reject_order_path(order), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded-xl text-sm w-20  '%>                  
+                  <%= button_to 'Recusar', reject_order_path(order), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded-xl text-sm w-20  '%>
                 </div>
                 <div class= 'flex mt-2'>
-                  <%= button_to 'Finalizar', finish_order_path(order), method: :patch, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2'%>          
+                  <%= button_to 'Finalizar', finish_order_path(order), method: :patch, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2'%>
                   <%= button_to 'Atualizar', new_order_order_update_path(order), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-1 rounded-xl text-sm w-20 ' %>
                 </div>
               </div>
-              
-              <div>      
+
+              <div>
                 <% if !order.vehicle %>
                   <%= form_with url: select_vehicle_order_path(order), method: :patch do |f|%>
                     <%= f.label :vehicle_id %>
@@ -85,14 +81,14 @@
                   <% end %>
                 <% end %>
               </div>
-            <% end %>   
-          </div> 
+            <% end %>
+          </div>
 
         </div>
       </div>
       <% end %>
     </div>
 
-  
+
   <% end%>
 </section>

@@ -3,7 +3,7 @@
   <div class='flex flex-col'>
     <% @budget_histories.each do |result| %>
       <div class= 'py-3'>
-        <%= result.carrier.fantasy_name %> - frete <%= number_to_currency(result.freight, unit: "R$") %> | <%= result.deadline %> dias úteis | <%= result.weight %>kg | <%= result.distance %>km | <%= result.cubic_size %>M cúbicos
+        <%= result.carrier.fantasy_name %> - frete <%= number_to_currency(result.freight, unit: "R$") %> | CEP: <%= result.zip_code %> | <%= result.deadline %> dias úteis | <%= result.cubic_size %>M cúbicos
       </div>
     <% end %>
   </div>

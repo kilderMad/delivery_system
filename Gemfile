@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.1"
+ruby "3.1.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3"
@@ -43,6 +43,7 @@ gem "rack-cors"
 
 gem "selenium-webdriver"
 gem 'webdrivers', '~> 5.0'
+gem 'faraday'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -67,12 +68,19 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem "rspec-rails"
   gem "capybara"
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  gem "capistrano", "~> 3.17", require: false
+  gem 'capistrano-rvm'
+  gem 'capistrano-bundler', '~> 2.0'
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem "capistrano3-unicorn"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -80,3 +88,7 @@ group :development do
   # gem "spring"
 end
 
+group :production do
+  gem "unicorn"
+  gem "mysql2" # , '~> 0.3.18'
+end

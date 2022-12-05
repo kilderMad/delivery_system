@@ -5,12 +5,12 @@ describe 'user can see order_updates' do
     carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br', address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
     Deadline.create!(distance_min: 601, distance_max: 1200, time_arrive: 4, carrier: carrier)
     Deadline.create!(distance_min: 1201, distance_max: 2000, time_arrive: 8, carrier: carrier)
-    Price.create!(cbm_min: 0.301, cbm_max: 1.500, weight_min: 1, weight_max: 30, value_km: 0.05, carrier: carrier)
-    Price.create!(cbm_min: 1.501, cbm_max: 3.500, weight_min: 1, weight_max: 50, value_km: 0.08, carrier: carrier)
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', value: 0.05, carrier: carrier)
+    Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     vehicle = Vehicle.create!(plate: 'PCL-2932', brand: 'Pegeot', model: 'Partner', year: '2022', capacity: 3000, carrier: carrier)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
-    order = Order.create!(status: 2, vehicle: vehicle ,distance: 2000, weight: 1.0, cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
+    order = Order.create!(status: 2, vehicle: vehicle , zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
     receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
     OrderUpdate.create!(order: order, date: '2022/12/05', hour: '6:30', last_location: 'Centro Tratamento DLL SP', next_location: 'Centro Tratamento DLL PE')
     OrderUpdate.create!(order: order, date: '2022/12/11', hour: '10:30', last_location: 'Centro Tratamento DLL PE', next_location: 'Centro de distribuição Recife')

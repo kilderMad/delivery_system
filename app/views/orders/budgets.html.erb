@@ -3,7 +3,7 @@
     <%= button_to 'Voltar', orders_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-14'%>
   </div>
 
-  <p class='font-semibold'>Resultados da busca para: <%= @weight%>kg | <%= @cubic_size%>M cúbicos | <%= @distance %>km</p>
+  <p class='font-semibold'>Resultados da busca para: <%= @cep%> | <%= @cubic_size%>M cúbicos
   <div class='pt-2'>
     <p class='pb-2 font-semibold'><%= @results.count %> <%= t(:result, count: @results.count) %> <%= t :found, count: @results.count %> </p>
     <% @results.each do |result| %>
