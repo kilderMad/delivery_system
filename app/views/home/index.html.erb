@@ -1,4 +1,4 @@
-<main class=''>
+<main class='pt-4'>
   <div class='container'>
     <div class='flex flex-col lg:flex-row pb-20 items-center h-screen justify-center space-y-5'>
       <div class='max-w-lg'>
@@ -9,10 +9,12 @@
       <div class='lg:pl-8 max-w-lg'>
         <h1 class=' text-2xl font-semibold'>Rastreio de pedidos<h1>
         <p class=' my-2'>Insira aqui o código de rastreamento do pedido ou da transportadora para localizar sua encomenda</p>
-        <%= form_with url: search_orders_path, method: :get do |f| %>
-          <%= f.text_field :query, class:'rounded-xl mt-3', placeholder: 'insira seu código' %>
-          <%= f.submit 'Buscar Pedido', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl ml-1 cursor-pointer' %>
-        <% end %>
+        <div>
+          <%= form_with url: search_orders_path, method: :get do |f| %>
+            <%= f.text_field :query, class:'rounded-xl my-3 mr-1', placeholder: 'Insira seu código' %>
+            <%= f.submit 'Buscar Pedido', class: 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl cursor-pointer' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
