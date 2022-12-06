@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-section {
-    padding: 40px 0;
-}
-
 #menu {
     color: #EFEFEF;
     display: flex;
