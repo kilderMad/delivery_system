@@ -15,7 +15,7 @@ describe 'User click on details of vehicle' do
 
     visit root_path
 
-    click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Dashboard'
     click_on 'Detalhes'
 
     expect(current_path).to eq carrier_vehicle_path(1, 1)

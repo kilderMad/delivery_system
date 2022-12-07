@@ -9,8 +9,8 @@ describe 'user deletes' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Excluir'
 
     expect(page).to have_content 'Preço apagado com sucesso!'

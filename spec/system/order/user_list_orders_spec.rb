@@ -21,7 +21,7 @@ describe 'user visits orders' do
 
     login_as(user)
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
 
     expect(current_path).to eq orders_path
     expect(page).to have_content 'Pedido: ABCBV1234512345'
@@ -68,7 +68,7 @@ describe 'user visits orders' do
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     login_as(user)
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
 
     expect(current_path).to eq orders_path
     expect(page).to have_content 'Pedido: ABCBV1234512345'
@@ -100,7 +100,7 @@ describe 'user visits orders' do
     login_as(user)
 
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
 
     expect(page).to have_content 'Não há pedidos'
   end

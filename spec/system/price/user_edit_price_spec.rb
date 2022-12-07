@@ -15,8 +15,8 @@ describe 'User edit price' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Editar'
 
     expect(page).to have_field('Peso cubado min', with: '0.001')
@@ -33,8 +33,8 @@ describe 'User edit price' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Editar'
 
     fill_in 'Peso cubado min', with: '1.001'
@@ -56,8 +56,8 @@ describe 'User edit price' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Editar'
 
     fill_in 'Peso cubado min', with: ''

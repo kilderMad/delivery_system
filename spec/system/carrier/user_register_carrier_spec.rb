@@ -9,7 +9,7 @@ describe 'User register carrier' do
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
-    click_on 'Transportadoras'
+    find('#menu-desktop').click_on 'Transportadoras'
     click_on 'Cadastrar'
 
     fill_in 'Nome', with: 'DLL'
@@ -32,7 +32,7 @@ describe 'User register carrier' do
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
-    click_on 'Transportadoras'
+    find('#menu-desktop').click_on 'Transportadoras'
     click_on 'Cadastrar'
     click_on 'Enviar'
 

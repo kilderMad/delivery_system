@@ -14,8 +14,8 @@ describe 'User sees vehicles' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    
+    find('#menu-desktop').click_on 'Dashboard'
+
     expect(page).to have_content 'Pegeot'
     expect(page).to have_content 'Partner'
     expect(page).to have_content 'PCL-2932'
@@ -27,7 +27,7 @@ describe 'User sees vehicles' do
     login_as(user)
 
     visit root_path
-    click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Dashboard'
 
     expect(page).to have_content 'Não há veiculos cadastrados'
   end

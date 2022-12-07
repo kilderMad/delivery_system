@@ -13,8 +13,8 @@ describe 'User register new price' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Cadastrar novo'
 
     fill_in 'Peso cubado min', with: '0.001'
@@ -35,8 +35,8 @@ describe 'User register new price' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Cadastrar novo'
 
     fill_in 'Peso cubado min', with: '0.001'
@@ -66,8 +66,8 @@ describe 'User register new price' do
 
     visit root_path
 
-    click_on 'Dashboard'
-    click_on 'Tabela de preços'
+    find('#menu-desktop').click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Tabela de preços'
     click_on 'Cadastrar novo'
     click_on 'Enviar'
 

@@ -12,7 +12,7 @@ describe 'User register new vehicle' do
     login_as(user)
 
     visit root_path
-    click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Dashboard'
     click_on 'Novo veiculo'
 
     fill_in 'Marca', with: 'Renault'
@@ -35,7 +35,7 @@ describe 'User register new vehicle' do
     login_as(user)
 
     visit root_path
-    click_on 'Dashboard'
+    find('#menu-desktop').click_on 'Dashboard'
     click_on 'Novo veiculo'
     click_on 'Cadastrar'
 

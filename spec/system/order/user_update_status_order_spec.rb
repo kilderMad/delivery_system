@@ -14,7 +14,7 @@ describe 'user can' do
     login_as(user)
 
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
     click_on 'Aceitar'
 
     expect(page).to have_content 'Status: Aceito'
@@ -35,7 +35,7 @@ describe 'user can' do
     login_as(user)
 
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
     click_on 'Recusar'
 
     expect(page).not_to have_content 'Pedido: ABCBV1234512345'
@@ -56,7 +56,7 @@ describe 'user can' do
     login_as(user)
 
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
     click_on 'Aceitar'
     select 'PCL-2932', from: 'vehicle_id'
     click_on 'Designar Veiculo'
@@ -78,7 +78,7 @@ describe 'user can' do
     login_as(user)
 
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
     click_on 'Finalizar'
 
     expect(page).to have_content 'Status: Finalizado'

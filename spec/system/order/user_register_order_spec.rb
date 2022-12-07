@@ -13,7 +13,7 @@ describe 'user register new order' do
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     login_as(user)
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
     click_on 'Cadastrar novo'
 
     fill_in 'Metros cúbicos', with: '1'
@@ -52,7 +52,7 @@ describe 'user register new order' do
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
     login_as(user)
     visit root_path
-    click_on 'Pedidos'
+    find('#menu-desktop').click_on 'Pedidos'
     click_on 'Cadastrar novo'
 
     fill_in 'CEP', with: ''

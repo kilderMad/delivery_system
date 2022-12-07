@@ -11,7 +11,7 @@ describe 'User edit carrier' do
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
-    click_on 'Transportadoras'
+    find('#menu-desktop').click_on 'Transportadoras'
     click_on 'Pac'
     click_on 'Editar'
 
@@ -28,7 +28,7 @@ describe 'User edit carrier' do
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
-    click_on 'Transportadoras'
+    find('#menu-desktop').click_on 'Transportadoras'
     click_on 'Pac'
     click_on 'Editar'
 
@@ -53,7 +53,7 @@ describe 'User edit carrier' do
     user = User.create!(email: 'kilder@gmail.com', password: 'password')
     login_as(user)
     visit root_path
-    click_on 'Transportadoras'
+    find('#menu-desktop').click_on 'Transportadoras'
     click_on 'Pac'
     click_on 'Editar'
 
