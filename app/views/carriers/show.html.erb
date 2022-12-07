@@ -1,50 +1,52 @@
-<%= button_to 'Voltar', root_path, method: :get, class: 'mt-2 float-right bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-14 mr-2 ' %>
-<div class='flex'>
-  <section class= 'mx-20 w-1/5'>
-    <h1 class=' text-xl font-bold pb-2'><%= @carrier.fantasy_name %></h1>
-    <div>
-      
-      <p>CNPJ: <%= @carrier.cnpj %></p>
-      <p>Email: <%= @carrier.email %></p>
-      <p>Domínio: <%= @carrier.domain %></p>
-      <p>Endereço: <%= @carrier.address %></p>
-    </div>
-    <div>      
-      <%= button_to 'Editar', edit_carrier_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white my-3 py-1 px-2 rounded-xl text-sm w-14 mr-2 ' %>
-    </div>
-  </section>
+<section  class=' pt-28 h-full px-[3%]'>
+  <%= button_to 'Voltar', root_path, method: :get, class: 'mt-2 float-right bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-14 mr-2 ' %>
+  <div class='flex'>
+    <div class= 'mx-20 w-1/5'>
+      <h1 class=' text-xl font-bold pb-2'><%= @carrier.fantasy_name %></h1>
+      <div>
 
-  <section class='mx-6 w-4/5'>
-    <h1 class=' text-xl font-semibold'>Veiculos</h1>
-    
-    <% if @vehicles && @vehicles.empty?%>
-    <div>
-      <p>Não há veiculos cadastrados</p>
-    </div>
-  <% elsif @vehicles %>
-    <div class='py-5 flex justify-start w-full '>
-      <table class='vehicles min-w-[70%]'>
-        <thead>
-          <tr class= ' text-left'>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Placa</th>
-            <th>Links</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @vehicles.each do |v|%>
-            <tr>
-              <td><%= v.brand%></td>
-              <td><%= v.model %></td>
-              <td><%= v.plate %></td>
-              <td><%= button_to 'Detalhes', carrier_vehicle_path(current_user.carrier, v), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white px-2 rounded-xl text-sm w-18 mr-2 '  %></td>
+        <p>CNPJ: <%= @carrier.cnpj %></p>
+        <p>Email: <%= @carrier.email %></p>
+        <p>Domínio: <%= @carrier.domain %></p>
+        <p>Endereço: <%= @carrier.address %></p>
+      </div>
+      <div>
+        <%= button_to 'Editar', edit_carrier_path, method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white my-3 py-1 px-2 rounded-xl text-sm w-14 mr-2 ' %>
+      </div>
+    </section>
+
+    <section class='mx-6 w-4/5'>
+      <h1 class=' text-xl font-semibold'>Veiculos</h1>
+
+      <% if @vehicles && @vehicles.empty?%>
+      <div>
+        <p>Não há veiculos cadastrados</p>
+      </div>
+    <% elsif @vehicles %>
+      <div class='py-5 flex justify-start w-full '>
+        <table class='vehicles min-w-[70%]'>
+          <thead>
+            <tr class= ' text-left'>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Placa</th>
+              <th>Links</th>
             </tr>
-        <%end%>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+          <% @vehicles.each do |v|%>
+              <tr>
+                <td><%= v.brand%></td>
+                <td><%= v.model %></td>
+                <td><%= v.plate %></td>
+                <td><%= button_to 'Detalhes', carrier_vehicle_path(current_user.carrier, v), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white px-2 rounded-xl text-sm w-18 mr-2 '  %></td>
+              </tr>
+          <%end%>
+          </tbody>
+        </table>
+      </div>
+    <%end%>
+    <%= button_to 'Novo veiculo', new_carrier_vehicle_path(@carrier), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white px-2 py-1 rounded-xl text-sm w-18 mr-2 '   %>
     </div>
-  <%end%>
-  <%= button_to 'Novo veiculo', new_carrier_vehicle_path(@carrier), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white px-2 py-1 rounded-xl text-sm w-18 mr-2 '   %>
+  <div>
   </section>
-<div>

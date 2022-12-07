@@ -14,7 +14,7 @@
   <body>
     <header id='menu' class='absolute top-0 w-full'>
       <div class='container'>
-        <nav id='menu-desktop' class='w-full hidden md:flex justify-between items-center'>
+        <nav id='menu-desktop' class='w-full hidden lg:flex justify-between items-center'>
           <div class='flex items-center'>
             <div class='item'>
               <%= image_tag 'logo-white.png'%>
@@ -28,7 +28,6 @@
             <%  elsif user_signed_in? && !current_user.admin? %>
             <div class='item_menu ml-1'><%= link_to 'Dashboard', @carrier %></div>
             <div class='item_menu'><%= link_to 'Tabela de preços', carrier_prices_path(@carrier) %></div>
-            <div class='item_menu ml-1'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
             <div class='item_menu ml-1'><%= link_to 'Pedidos', orders_path %></div>
             <% end %>
           </div>
@@ -42,7 +41,7 @@
           <% end %>
         </nav>
 
-        <nav class='flex md:hidden w-full items-center justify-between'>
+        <nav class='flex lg:hidden w-full items-center justify-between'>
           <div id='btn-menu' class='flex items-center'>
             <i class="fa-solid fa-bars text-3xl"></i>
           </div>
@@ -61,7 +60,6 @@
             <%  elsif user_signed_in? && !current_user.admin? %>
             <div class='pb-3 font-semibold text-lg'><%= link_to 'Dashboard', @carrier %></div>
             <div class='pb-3 font-semibold text-lg'><%= link_to 'Tabela de preços', carrier_prices_path(@carrier) %></div>
-            <div class='pb-3 font-semibold text-lg'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
             <div class='pb-3 font-semibold text-lg'><%= link_to 'Pedidos', orders_path %></div>
             <% end %>
 
