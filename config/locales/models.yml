@@ -51,6 +51,8 @@ pt-BR:
         zip_code: "CEP"
         vehicle_id: "Veiculo"
         vehicle: "Veiculo"
+      order/status:
+        pendente: "Pendente de aceite"
       order_update:
         date: "Data"
         hour: "Hora"

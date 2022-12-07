@@ -18,6 +18,8 @@ describe 'user can' do
     click_on 'Aceitar'
 
     expect(page).to have_content 'Status: Aceito'
+    expect(page).not_to have_button 'Aceitar'
+    expect(page).not_to have_button 'Recusar'
   end
 
   it 'reject order successfully' do
@@ -73,8 +75,9 @@ describe 'user can' do
     Price.create!(cbm_min: 1.501, cbm_max: 3.500, state: 'PE', value: 0.08, carrier: carrier)
     user = User.create!(email: 'kilder@dll.com.br', password: 'password')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
-    order = Order.create!( zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla', receiver_address: 'blableblu',
-    receiver_name: 'Madson kilder filho', receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
+    order = Order.create!( zip_code: '50720-570', cubic_size: 0.4, pickup_address: 'blablabla', status: 4,
+                           receiver_address: 'blableblu', receiver_name: 'Madson kilder filho',
+                           receiver_cpf: '71315516699', receiver_phone: '81981316988', carrier: carrier)
     login_as(user)
 
     visit root_path

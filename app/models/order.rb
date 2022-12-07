@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  enum status: { "Pendente de aceite": 1, Aceito: 2, Recusado: 3, Enviado: 4, Finalizado: 5, Cancelado:6}
+  enum status: { pendente: 1, Aceito: 2, Recusado: 3, Enviado: 4, Finalizado: 5, Cancelado:6}
 
   validates :status, :zip_code, :cubic_size,  :pickup_address, :receiver_address, :receiver_cpf, :receiver_name, :receiver_phone, presence: true
   validates :receiver_cpf, length: { is: 11 }, numericality: true

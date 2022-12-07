@@ -93,6 +93,30 @@ describe 'user visits orders' do
     expect(page).not_to have_content 'Telephone: 81981316988'
   end
 
+  it '(user) and sees correct buttons' do
+    allow(SecureRandom).to receive(:alphanumeric).and_return('ABCBV1234512345')
+    carrier = Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br',
+                              address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')
+    Price.create!(cbm_min: 0.301, cbm_max: 1.500, state: 'PE', deadline: 8, value: 160, carrier:)
+    Order.create!(zip_code: '50720-570', status: 1, cubic_size: 0.5, pickup_address: 'plablabla',
+                  receiver_address: 'plableblu', receiver_name: 'Simba kilder ferreira', receiver_cpf: '12215516699',
+                  receiver_phone: '90991316988', carrier:)
+    user = User.create!(email: 'kilder@dll.com.br', password: 'password')
+    login_as(user)
+    visit root_path
+    find('#menu-desktop').click_on 'Pedidos'
+
+    expect(current_path).to eq orders_path
+    expect(page).to have_content 'Pedido: ABCBV1234512345'
+    expect(page).to have_content 'Status: Pendente de aceite'
+    expect(page).to have_content 'Transportadora: DLL'
+    expect(page).to have_button 'Aceitar'
+    expect(page).to have_button 'Recusar'
+    expect(page).not_to have_button 'Finalizar'
+    expect(page).not_to have_button 'Atualizar'
+    expect(page).not_to have_button 'Designar Veiculo'
+  end
+
   it 'and when there are no orders registered' do
     Carrier.create!(fantasy_name: 'DLL', cnpj: '12345678901237', domain: 'dll.com.br',
                     address: 'Av. Geraldo Patrin, 745', email: 'support@dll.com.br')

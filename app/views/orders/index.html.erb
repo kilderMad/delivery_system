@@ -32,11 +32,11 @@
       <p>Não há pedidos</p>
       <% else %>
         <% @orders.each do |order| %>
-        <div class='order py-5 px-5 bg-slate-200 flex items-center justify-self-stretch m-2'>
+        <div class='order py-5 px-5 bg-slate-200 flex justify-self-stretch m-2'>
           <div class= 'flex flex-col'>
             <div>
               <p class=' text-lg font-semibold pb-4'>Pedido: <%= order.code %></p>
-              <p class='font-bold'>Status: <%= order.status %></p>
+              <p class='font-bold'>Status: <%= Order.human_attribute_name("status.#{order.status}") %></p>
               <p>Dimensão em M cúbicos: <%= order.cubic_size %></p>
               <p>Endereço de retirada: <%= order.pickup_address %></p>
             </div>
@@ -63,22 +63,25 @@
               <div><%= button_to 'Ver detalhes de entrega', order_order_updates_path(order), method: :get, class: 'bg-gray-400 hover:bg-gray-500 text-white py-1 px-2 rounded-xl text-sm mr-2 ' %></div>
               <% if user_signed_in? && !current_user.admin? %>
                 <div class= 'flex flex-col'>
-                  <div class= 'flex mt-2'>
-                    <%= button_to 'Aceitar', accept_order_path(order), method: :patch, class: 'bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2 '%>
-                    <%= button_to 'Recusar', reject_order_path(order), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded-xl text-sm w-20  '%>
-                  </div>
-                  <div class= 'flex mt-2'>
-                    <%= button_to 'Finalizar', finish_order_path(order), method: :patch, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2'%>
-                    <%= button_to 'Atualizar', new_order_order_update_path(order), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-1 rounded-xl text-sm w-20 ' %>
-                  </div>
+                  <% if order.pendente? %>
+                    <div class= 'flex mt-2'>
+                      <%= button_to 'Aceitar', accept_order_path(order), method: :patch, class: 'bg-green-500 hover:bg-green-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2 '%>
+                      <%= button_to 'Recusar', reject_order_path(order), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded-xl text-sm w-20  '%>
+                    </div>
+                  <% else %>
+                    <div class= 'flex my-2'>
+                      <%= button_to 'Finalizar', finish_order_path(order), method: :patch, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2'%>
+                      <%= button_to 'Atualizar', new_order_order_update_path(order), method: :get, class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-1 rounded-xl text-sm w-20 ' %>
+                    </div>
+                  <% end %>
                 </div>
 
                 <div>
-                  <% if !order.vehicle %>
+                  <% if !order.vehicle && !order.pendente? %>
                     <%= form_with url: select_vehicle_order_path(order), method: :patch do |f|%>
                       <%= f.label :vehicle_id %>
                       <%= f.collection_select :vehicle_id, @vehicles, :id, :plate%>
-                      <%= f.submit 'Designar Veiculo', class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl cursor-pointer'%>
+                      <%= f.submit 'Designar Veiculo', class: 'bg-blue-500 hover:bg-blue-700 text-white mt-2 py-1 px-2 rounded-xl cursor-pointer'%>
                     <% end %>
                   <% end %>
                 </div>
