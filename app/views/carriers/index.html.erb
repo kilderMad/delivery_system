@@ -1,45 +1,46 @@
 <section class=' pt-24 h-full px-[3%]'>
-  <h1 class='text-2xl font-bold pb-4'>Transportadoras</h1>
-
-  <div>
-    <%= button_to 'Cadastrar', new_carrier_path, method: :get, class: 'mb-2 bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2 '%>
-  </div>
-  <% if @carriers.empty?%>
+  <div class=' max-w-7xl mx-auto'>
+    <h1 class='text-2xl font-bold pb-4'>Transportadoras</h1>
     <div>
-      <p>Não há transportadoras cadastradas</p>
+      <%= button_to 'Cadastrar', new_carrier_path, method: :get, class: 'mb-2 bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded-xl text-sm w-20 mr-2 '%>
     </div>
-  <% else %>
-  <div class='bg-slate-300 p-5 flex justify-center'>
-    <table class='prices min-w-[100%]  bg-slate-300 p-5'>
-      <thead>
-        <tr class=' text-left'>
-          <th>Nome</th>
-          <th>CNPJ</th>
-          <th>Domínio</th>
-          <th>Endereço</th>
-          <th>Email</th>
-          <th>Ações</th>
-          <th>Estado</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @carriers.each do |c|%>
-          <tr>
-            <td><%= link_to c.fantasy_name, c %></td>
-            <td><%= c.cnpj %></td>
-            <td><%= c.domain %></td>
-            <td><%= c.address %></td>
-            <td><%= c.email %></td>
-            <% if c.active? %>
-            <td><%= button_to 'Inativar', inactivate_carrier_path(c), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white px-1 rounded-xl text-sm w-20 mr-2 ' %></td>
-            <%else%>
-            <td><%= button_to 'Ativar', reactivate_carrier_path(c), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white px-1 rounded-xl text-sm w-20 mr-2 ' %></td>
-            <% end %>
-            <td><%= t c.status %></td>
+    <% if @carriers.empty?%>
+      <div>
+        <p>Não há transportadoras cadastradas</p>
+      </div>
+    <% else %>
+    <div class='bg-slate-300 p-5 flex justify-center'>
+      <table class='prices min-w-[100%]  bg-slate-300 p-5'>
+        <thead>
+          <tr class=' text-left'>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Domínio</th>
+            <th>Endereço</th>
+            <th>Email</th>
+            <th>Ações</th>
+            <th>Estado</th>
           </tr>
-      <%end%>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <% @carriers.each do |c|%>
+            <tr>
+              <td><%= link_to c.fantasy_name, c %></td>
+              <td><%= c.cnpj %></td>
+              <td><%= c.domain %></td>
+              <td><%= c.address %></td>
+              <td><%= c.email %></td>
+              <% if c.active? %>
+              <td><%= button_to 'Inativar', inactivate_carrier_path(c), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white px-1 rounded-xl text-sm w-20 mr-2 ' %></td>
+              <%else%>
+              <td><%= button_to 'Ativar', reactivate_carrier_path(c), method: :patch, class: 'bg-red-500 hover:bg-red-700 text-white px-1 rounded-xl text-sm w-20 mr-2 ' %></td>
+              <% end %>
+              <td><%= t c.status %></td>
+            </tr>
+        <%end%>
+        </tbody>
+      </table>
+    </div>
+    <%end%>
   </div>
-  <%end%>
 </section>
