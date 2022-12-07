@@ -39,6 +39,8 @@ gem 'tailwindcss-rails'
 
 gem 'faraday'
 
+gem "font-awesome-sass", "~> 6.2.1"
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

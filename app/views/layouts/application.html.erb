@@ -14,7 +14,7 @@
   <body>
     <header id='menu' class='absolute top-0 w-full'>
       <div class='container'>
-        <nav class='w-full flex justify-between items-center'>
+        <nav id='menu-desktop' class='w-full hidden md:flex justify-between items-center'>
           <div class='flex items-center'>
             <div class='item'>
               <%= image_tag 'logo-white.png'%>
@@ -40,6 +40,38 @@
           <% else %>
           <div class=''><%= link_to 'Entrar', new_user_session_path %></div>
           <% end %>
+        </nav>
+
+        <nav class='flex md:hidden w-full items-center justify-between'>
+          <div id='btn-menu' class='flex items-center'>
+            <i class="fa-solid fa-bars text-3xl"></i>
+          </div>
+          <div class='item'>
+            <%= image_tag 'logo-white.png'%>
+          </div>
+          <div>
+          </div>
+          <div id='menu-mobile' class='bg-zinc-900 h-screen hidden flex-col items-center absolute top-[71px] left-0 px-6'>
+            <div class='pb-3 pt-2 font-semibold text-lg'>
+              <%= link_to 'Home', root_path %>
+            </div>
+            <% if user_signed_in? && current_user.admin? %>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Transportadoras', carriers_path %></div>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Pedidos', orders_path %></div>
+            <%  elsif user_signed_in? && !current_user.admin? %>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Dashboard', @carrier %></div>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Tabela de preços', carrier_prices_path(@carrier) %></div>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Tabela de prazos', carrier_deadlines_path(@carrier) %></div>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Pedidos', orders_path %></div>
+            <% end %>
+
+            <% if user_signed_in? %>
+              <div class='pb-3 font-semibold text-lg'><%= current_user.email %></div>
+              <div class='pb-3 font-semibold text-lg text-red-600'><%= button_to 'Sair', destroy_user_session_path, method: 'delete' %></div>
+            <% else %>
+            <div class='pb-3 font-semibold text-lg'><%= link_to 'Entrar', new_user_session_path %></div>
+            <% end %>
+          </div>
         </nav>
       </div>
     </header>
