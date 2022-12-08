@@ -1,14 +1,14 @@
-<main class='pt-4'>
+<main class='pt-4 bg-cover bg-right-top' style="background-image: url(<%= asset_path 'main-background.jpg' %>)">
   <div class='container'>
     <div class='flex flex-col lg:flex-row pb-20 items-center h-screen justify-center space-y-5'>
-      <div class='max-w-lg'>
-        <h1 class=' text-3xl font-semibold'>ECONOMIZE NA GESTÃO DE FRETES<h1>
-        <p class=' my-3'>Cote simultaneamente com diversas transportadoras e gere envios com rastreio inteligente em uma plataforma integrada</p>
+      <div class='max-w-lg '>
+        <h1 class=' text-3xl font-bold backdrop-blur'>ECONOMIZE NA GESTÃO DE FRETES<h1>
+        <p class=' my-3 font-bold text-xl'>Cote simultaneamente com diversas transportadoras e gere envios com rastreio inteligente em uma plataforma integrada</p>
       </div>
 
       <div class='lg:pl-8 max-w-lg'>
-        <h1 class=' text-2xl font-semibold'>Rastreio de pedidos<h1>
-        <p class=' my-2'>Insira aqui o código de rastreamento do pedido ou da transportadora para localizar sua encomenda</p>
+        <h1 class=' text-3xl font-bold pb-2'>Rastreio de pedidos<h1>
+        <p class=' my-2 font-bold inline text-xl'>Insira aqui o código de rastreamento do pedido ou da transportadora para localizar sua encomenda</p>
         <div>
           <%= form_with url: search_orders_path, method: :get do |f| %>
             <%= f.text_field :query, class:'rounded-xl my-3 mr-1', placeholder: 'Insira seu código' %>
